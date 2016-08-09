@@ -3,3 +3,4 @@
 source 'http://rubygems.org'
 
 gem 'jekyll-redirect-from'
+gem 'jekyll-paginate'

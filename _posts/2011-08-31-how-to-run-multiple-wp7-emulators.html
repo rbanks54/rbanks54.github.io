@@ -1,0 +1,41 @@
+---
+layout: post
+title: How To Run Multiple WP7 Emulators
+date: '2011-08-31T16:22:00.003+10:00'
+author: Richard Banks
+tags:
+- WP7
+modified_time: '2011-08-31T16:24:33.566+10:00'
+thumbnail: http://lh5.ggpht.com/-LeJnomTpB4o/Tl3TIJYnHnI/AAAAAAAABNA/STgqFF_j3Z4/s72-c/image_thumb%25255B3%25255D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-8791484328388951114
+blogger_orig_url: http://www.richard-banks.org/2011/08/how-to-run-multiple-wp7-emulators.html
+---
+
+The Windows Phone 7 Tools, including the latest Mango update, provide no supported way for running two emulators at the same time.&nbsp; This can be a problem when trying to see how a multiuser application works across multiple devices.&nbsp; Fortunately there’s a way to workaround this limitation using some unsupported edits to your WP7 emulator settings.<br />
+ NOTE: This is not a supported change and if something breaks on your machine, well… you’ve been warned :-)<br />
+ <br />
+ <strong>Step 1:</strong> Open explorer in Administrator mode and go to C:\ProgramData\Microsoft\Phone Tools\CoreCon\10.0\addons<br />
+ <br />
+ <strong>Step 2:</strong> Copy “ImageConfig.en-US.xsl” and name it “ImageConfig.en-US 2.xsl”<br />
+ <br />
+ <strong>Step 3:</strong> Open this new file in your text editor of choice and locate the DEVICE element and change the device name to something of your choice and the device GUID to a new GUID as shown.&nbsp; Use the <a href="http://www.guidgenerator.com/online-guid-generator.aspx">Online GUID Generator</a> to make generating new GUIDs easy.<br />
+ <br />
+ <a href="http://lh3.ggpht.com/-Y6XVbFBh9-o/Tl3THeGcWFI/AAAAAAAABM8/lWkHvnLBuJE/s1600-h/image%25255B5%25255D.png"><img alt="image" border="0" height="59" src="http://lh5.ggpht.com/-LeJnomTpB4o/Tl3TIJYnHnI/AAAAAAAABNA/STgqFF_j3Z4/image_thumb%25255B3%25255D.png?imgmax=800" style="background-image: none; border: 0px currentColor; display: inline; padding-left: 0px; padding-right: 0px; padding-top: 0px;" title="image" width="644" /></a><br />
+ <br />
+ <strong>Step 4:</strong> Given the WP7 is a virtual machine, we also need to supply a new Virtual Machine ID, so locate the VMID section and provide a new GUID in there as well.&nbsp; Again the <a href="http://www.guidgenerator.com/online-guid-generator.aspx">Online GUID Generator</a> can be used for this purpose.<br />
+ <br />
+ <a href="http://lh3.ggpht.com/-aD8999WBvk4/Tl3TI4k6S6I/AAAAAAAABNE/4kayd9OelVw/s1600-h/image%25255B9%25255D.png"><img alt="image" border="0" height="96" src="http://lh4.ggpht.com/-jo93aVk8gkk/Tl3TJgVYgNI/AAAAAAAABNI/1Q5G50tIqWo/image_thumb%25255B5%25255D.png?imgmax=800" style="background-image: none; border: 0px currentColor; display: inline; padding-left: 0px; padding-right: 0px; padding-top: 0px;" title="image" width="449" /></a><br />
+ <br />
+ Ensure that the GUID you insert is in the same format (i.e. with the braces)<br />
+ <br />
+ <strong>Step 5:</strong>&nbsp; Save the file and start the Application Deployment Tool.&nbsp; You should now see your new emulator available to deploy your applications to:<br />
+ <br />
+ <a href="http://lh3.ggpht.com/-pL06EaDHflI/Tl3TKPIpBDI/AAAAAAAABNM/D9Itd4svlrM/s1600-h/image%25255B13%25255D.png"><img alt="image" border="0" height="157" src="http://lh4.ggpht.com/-XDtwACAVGN0/Tl3TKxrnN1I/AAAAAAAABNQ/gFFd2hxx4gU/image_thumb%25255B7%25255D.png?imgmax=800" style="background-image: none; border: 0px currentColor; display: inline; padding-left: 0px; padding-right: 0px; padding-top: 0px;" title="image" width="450" /></a><br />
+ <br />
+ If you close and restart Visual Studio 2010 you should also seen the second phone emulator available as a deployment target:<br />
+ <br />
+ <a href="http://lh4.ggpht.com/-jkEii2kzIPI/Tl3TLQc5U8I/AAAAAAAABNU/PsjVW8R7cOs/s1600-h/image%25255B17%25255D.png"><img alt="image" border="0" height="119" src="http://lh6.ggpht.com/-FdXurjhNAKE/Tl3TLwKZU4I/AAAAAAAABNY/xi0AOLFPf7k/image_thumb%25255B9%25255D.png?imgmax=800" style="background-image: none; border: 0px currentColor; display: inline; padding-left: 0px; padding-right: 0px; padding-top: 0px;" title="image" width="252" /></a><br />
+ <br />
+ Note that of you run a phone application in debug mode there seems to be no way to launch a second instance on the other emulator whilst the phone is running.&nbsp; It’s not a major problem though since you can simply take the debug .xap file and deploy it to the second emulator using the deployment tool.<br />
+ <br />
+ I hope this helps you out.&nbsp; Enjoy!

@@ -1,0 +1,16 @@
+---
+layout: post
+title: Underscores in Test Names are a Pain to Type, Right? Not Anymore!
+date: '2011-11-11T08:49:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- testing
+- open source
+modified_time: '2011-11-11T08:49:54.395+11:00'
+thumbnail: http://lh6.ggpht.com/-HwrA65auS7s/TrxG_61CKDI/AAAAAAAABO0/7JRf76ZytXs/s72-c/image_thumb1.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-3324292553191835452
+blogger_orig_url: http://www.richard-banks.org/2011/11/underscores-in-test-names-are-pain-to.html
+---
+
+<p>It might be a large assumption given some of the customers I deal with, but I’m going to assume you write unit tests.&#160; I’m also going to assume that when you write tests your test names have underscores separating all the words and making your test names human readable. Something like This_is_a_really_long_test_name_but_thats_ok_because_its_easy_to_read_when_I_use_underscores.</p>  <p>The only (minor) problem I have with this approach is that underscore isn’t the easiest key to type.&#160; I’d rather just hit the space bar and have Visual Studio change that space to an underscore for me – after all, that’s exactly what computers are good for :-)</p>  <p>Here’s the good news, there’s a great little ReSharper macro that has been developed that does just that – it’s available from <a href="https://github.com/joaroyen/ReSharperExtensions">https://github.com/joaroyen/ReSharperExtensions</a> and all you need to do is create an R# live template that wires the macro up to your test name field in a live template.&#160; For example:</p>  <p><a href="http://lh3.ggpht.com/-sdA4nhHyejk/TrxG-Pn6wfI/AAAAAAAABOs/EvjjdlTbCLg/s1600-h/image3.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" src="http://lh6.ggpht.com/-HwrA65auS7s/TrxG_61CKDI/AAAAAAAABO0/7JRf76ZytXs/image_thumb1.png?imgmax=800" width="675" height="241" /></a></p>  <p>Now when you use the live template to create a test you can simply type the test name with spaces and they’ll be converted into underscores for you automagically.&#160; Fanstastic!</p>  <p>Kudos to <a href="http://www.joaroyen.com/">Joar Oyen</a> for his great work, and feel free to <a href="http://www.joaroyen.com/2010/08/resharpers-live-templates-can-do.html">check out his blog post</a> for how this works under the hood.</p>  

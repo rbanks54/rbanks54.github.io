@@ -1,0 +1,12 @@
+---
+layout: post
+title: Debugging ASP.NET using Firefox, Safari, etc
+date: '2005-06-30T10:18:00.000+10:00'
+author: Richard Banks
+tags: 
+modified_time: '2005-06-30T10:22:31.883+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-112009095188037644
+blogger_orig_url: http://www.richard-banks.org/2005/06/debugging-aspnet-using-firefox-safari.html
+---
+
+I've got an issue with the rendering of pages in Firefox and Safari that I need to deal with.  The pages render correctly in IE, but not in the other browsers so I needed to find a way to debug the application while testing the pages using Firefox and Safari.<br /><br />I found a small post on a forum that indicated all you need to do is attach to the ASP worker Process (aspnet_wp) and it would all work.  Guess what - it's true.  I love it when things are so simple :-)

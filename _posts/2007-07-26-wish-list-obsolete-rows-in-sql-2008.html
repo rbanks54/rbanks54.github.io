@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'Wish List: Obsolete Rows in SQL 2008'
+date: '2007-07-26T13:28:00.001+10:00'
+author: Richard Banks
+tags:
+- database
+- readify
+modified_time: '2007-07-26T13:28:06.360+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-4659417771478708856
+blogger_orig_url: http://www.richard-banks.org/2007/07/wish-list-obsolete-rows-in-sql-2008.html
+---
+
+<p>This came up during a discussion about meta data for table rows on the <a href="http://www.readify.net/">Readify</a> internal mailing list.</p> <p>Wouldn't it be nice to have a way to logically delete rows in a table, i.e. make it so that they were available for looking up information like descriptions and so forth but in general did not come as results in normal select statements.&nbsp; It would be even better if obsolete rows could be excluded when trying to establish new foreign key relationships.</p> <p>Here's the feedback that has been placed on the SQL 2008 CTP site:</p> <p><em><font color="#ff8040">SQL Server could have:</font></em> <p></p><font color="#ff8040">OBSOLETE FROM sometable WHERE someclause</font></p> <p><em><font color="#ff8040">and those rows would no longer be returned by</font></em> <p></p><font color="#ff8040">SELECT columns FROM sometable</font> <p></p><em><font color="#ff8040">unless you also added:</font></em> <p></p><font color="#ff8040">SELECT columns FROM sometable WITH OBSOLETE</font> <p></p><em><font color="#ff8040">Rows could be reinstated by:</font></em> <p></p><font color="#ff8040">REINSTATE FROM sometable WHERE someclause</font> <p></p><em><font color="#ffff80"><font color="#ff8040">Foreign key relationships could then be defined as not permitting new references to obsolete rows. No doubt performance gains could also be obtained where the engine knows which rows won't be updated. Part of this could be done by partitioning today but it's not the full story.</font>&nbsp;</font></em>&nbsp;</p> <p>&nbsp;</p> <p>What do you think?</p> <p>P.S. If you are on the <a href="https://connect.microsoft.com/SQLServer">SQL 2008 CTP program</a> then go to the <a href="https://connect.microsoft.com/default.aspx">Microsoft Connect</a> site and vote for the Obsolete/Reinstate feature <a href="https://connect.microsoft.com/SQLServer/feedback/ViewFeedback.aspx?FeedbackID=289076">via this link</a>.</p>

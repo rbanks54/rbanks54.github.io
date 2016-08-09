@@ -1,0 +1,14 @@
+---
+layout: post
+title: What is a Unit Test?
+date: '2008-08-11T08:31:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- testing
+modified_time: '2008-08-11T08:31:31.951+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-5997523796170474942
+blogger_orig_url: http://www.richard-banks.org/2008/08/what-is-unit-test.html
+---
+
+<p>I've talked about unit testing a number of times in the past, however I often do so with the assumption that we have a shared understanding of what a unit test actually is.</p> <p>A unit test is simply a test that ensures that a single class does what it is meant to without needing to cross classes boundaries in order to execute, with the exception of using mocks and stubs.&nbsp; This is often represented using the ACID acronym, commonly talked used when referring to database transactions.:</p> <ul> <li><strong>A</strong>tomic</li> <li><strong>C</strong>onsistent</li> <li><strong>I</strong>solated</li> <li><strong>D</strong>urable</li></ul> <p>A test that verifies multiple pieces of functionality is not atomic.</p> <p>A test that changes results based on external factors (such as time of day) is not consistent.</p> <p>A test that hits a database, file system, network or even interacts with other business classes is not isolated.&nbsp; Neither are tests that need to be run in a specific order.</p> <p>A test that fails if a config files isn't set correctly, or if specific data isn't available or breaks when other classes in the application change (not including the class under test) is not durable.</p> <p>It's a pretty simple way of thinking of things.</p> <p>And just to be really clear a test written using a unit testing framework (NUnit, MSTest, xUnit, etc) isn't automatically a unit test either.</p> <p>&nbsp;</p> <p>So does that mean we should only write tests to meet this criteria.&nbsp; Not at all! Just don't call them "unit tests".&nbsp; They are integration tests. And they are absolutely required when testing your application.&nbsp; Unit testing only one part of the overall testing picture.</p> <p>As a note, when I write tests I typically store unit tests and integration tests in separate assemblies to make it clear what type of tests are stored in each.&nbsp; And when I do TDD I will quite happily use integration tests as a part of the TDD process - but only after I have already done as much as I can with unit tests.</p>  

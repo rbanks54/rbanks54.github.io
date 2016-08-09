@@ -1,0 +1,14 @@
+---
+layout: post
+title: How To Prevent Visual Studio 2012 ALL CAPS Menus!
+date: '2012-06-01T11:45:00.001+10:00'
+author: Richard Banks
+tags:
+- Visual Studio
+modified_time: '2012-06-01T11:45:47.513+10:00'
+thumbnail: http://lh6.ggpht.com/-8Fx6ZWCPv-k/T8get6hiSoI/AAAAAAAABTE/j1ChXoQZDLU/s72-c/image_thumb%25255B2%25255D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-4035599995510384804
+blogger_orig_url: http://www.richard-banks.org/2012/06/how-to-prevent-visual-studio-2012-all.html
+---
+
+<p>For all those people who can’t stand the ALL CAPS menus in Visual Studio 2012 there’s a way to switch them to normal casing.</p>  <p>Crack open your registry editor and create the following registry key and value</p>  <p>HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\11.0\General\SuppressUppercaseConversion   <br />REG_DWORD value: 1</p>  <p>Here’s what it looks like BEFORE</p>  <p><a href="http://lh3.ggpht.com/-wz9D9bqQwBQ/T8geqlkIEQI/AAAAAAAABS8/9cHKspI1Ics/s1600-h/image%25255B6%25255D.png"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" src="http://lh6.ggpht.com/-8Fx6ZWCPv-k/T8get6hiSoI/AAAAAAAABTE/j1ChXoQZDLU/image_thumb%25255B2%25255D.png?imgmax=800" width="346" height="84" /></a></p>  <p>And here it is after the change</p>  <p><a href="http://lh5.ggpht.com/-WFnjjgvpgP0/T8geu4bhrFI/AAAAAAAABTM/pfsdb7RB1r4/s1600-h/image%25255B7%25255D.png"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" src="http://lh5.ggpht.com/-QfxIM4ldFxA/T8gewvm6oFI/AAAAAAAABTU/ApCcE6aPiyM/image_thumb%25255B3%25255D.png?imgmax=800" width="346" height="84" /></a></p>  <p>You’re all very welcome!&#160; Now go tell your friends <img style="border-bottom-style: none; border-left-style: none; border-top-style: none; border-right-style: none" class="wlEmoticon wlEmoticon-smile" alt="Smile" src="http://lh6.ggpht.com/-s9wPtd7I4eM/T8gex58iVWI/AAAAAAAABTc/kcBJYcMznh8/wlEmoticon-smile%25255B2%25255D.png?imgmax=800" /></p>  

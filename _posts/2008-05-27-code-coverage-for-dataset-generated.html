@@ -1,0 +1,16 @@
+---
+layout: post
+title: Code Coverage for DataSet Generated Code
+date: '2008-05-27T13:58:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- development
+modified_time: '2008-05-27T13:58:18.218+10:00'
+thumbnail: http://lh4.ggpht.com/rbanks54/SDuGzbBrWXI/AAAAAAAAAXY/ZBG19Avxr7A/s72-c/image_thumb%5B2%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6364261913914693802
+blogger_orig_url: http://www.richard-banks.org/2008/05/code-coverage-for-dataset-generated.html
+---
+
+<p>I just ran into an issue with code coverage and generated code from the Visual Studio 2008 dataset designer.&nbsp; Basically, all the code in the designer.cs is included in the coverage reports instead of being excluded as expected (see the image below), and yet all of the properties are marked with the DebuggerNonUserCode attribute (see <a href="http://richardsbraindump.blogspot.com/2007/12/how-to-exclude-method-from-code.html" target="_blank">my previous post</a> on the subject).</p> <p><a href="http://lh4.ggpht.com/rbanks54/SDuGybBrWWI/AAAAAAAAAXQ/ir-PBVPl_zQ/s1600-h/image%5B4%5D.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" border="0" alt="image" src="http://lh4.ggpht.com/rbanks54/SDuGzbBrWXI/AAAAAAAAAXY/ZBG19Avxr7A/image_thumb%5B2%5D.png?imgmax=800" width="573" height="419"></a> </p> <p>After a little hunting around, I ran across this workaround on the Connect site - <a title="http://connect.microsoft.com/VisualStudio/feedback/Workaround.aspx?FeedbackID=338895" href="http://connect.microsoft.com/VisualStudio/feedback/Workaround.aspx?FeedbackID=338895">http://connect.microsoft.com/VisualStudio/feedback/Workaround.aspx?FeedbackID=338895</a></p> <p>Here eradicator1 indicates that you need the DebuggerNonUserCode attribute applied to the setter and getter parts of the property declaration instead of just at the property level.&nbsp; Here's the same code, with the attribute applied to just the Count property getter.</p> <p><a href="http://lh3.ggpht.com/rbanks54/SDuG1LBrWYI/AAAAAAAAAXg/bEAisCV1-_g/s1600-h/image%5B9%5D.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" border="0" alt="image" src="http://lh3.ggpht.com/rbanks54/SDuG2LBrWZI/AAAAAAAAAXo/M62AZeAMwWE/image_thumb%5B5%5D.png?imgmax=800" width="664" height="455"></a>&nbsp; </p> <p>What a pain in the neck.&nbsp; To make it worse, being generated code, any changes you make are likely to get silently trashed at some point in the future. :-(</p> <p>Hopefully this will be fixed in <a href="http://msdn.microsoft.com/en-us/vstudio/products/cc533447.aspx" target="_blank">VS2008 SP1</a>, but I haven't seen anything indication at this stage that it will be.</p>  

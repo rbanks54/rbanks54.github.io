@@ -1,0 +1,15 @@
+---
+layout: post
+title: How To Unit Test Async Methods with MSTest, XUnit and VS11 Beta
+date: '2012-03-04T09:10:00.001+11:00'
+author: Richard Banks
+tags:
+- testing
+- development
+- VS11
+modified_time: '2012-03-04T09:16:40.995+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2287644337089218414
+blogger_orig_url: http://www.richard-banks.org/2012/03/how-to-unit-test-async-methods-with.html
+---
+
+MSTest finally got some love with the Visual Studio 11 Beta and one of those changes was to enable tests to run asynchronously using the <strong>async</strong> and <strong>await</strong> keywords.<br /><br />This is required if you want to write tests against any async methods (especially with WinRT!) but can also be used anywhere else you need to perform asynchronous operations.<br /><br />Here’s a silly sample test to show you how it’s done<br /><br /><pre class="brush: c#;">[TestMethod]<br />public async Task LoadGoogleHomePageAsync()<br />{<br />    var client = new System.Net.Http.HttpClient();<br />    var page = await client.GetStringAsync("www.google.com");<br />    Microsoft.VisualStudio.TestTools.UnitTesting.StringAssert.Contains(page, "google");<br />}</pre><br />XUnit also supports this option as shown here:<br /><br /><pre class="brush: c#;">[Xunit.Fact]<br />public async Task XUnitAsyncTestMethod()<br />{<br />    var c = new System.Net.Http.HttpClient();<br />    var result = await c.GetStringAsync("http://www.google.com");<br />    Xunit.Assert.Contains("google", result);<br />}</pre><br />Be aware that if you have a testsettings file specified in the Unit Test Explorer that async tests will not work.&nbsp; This applies to the beta only.&nbsp; Apart from that everything works as expected.

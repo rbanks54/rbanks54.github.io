@@ -1,0 +1,13 @@
+---
+layout: post
+title: Postbacks not working in ASP.NET
+date: '2007-01-24T11:32:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+modified_time: '2007-01-24T11:32:34.735+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-3021461925843961071
+blogger_orig_url: http://www.richard-banks.org/2007/01/postbacks-not-working-in-aspnet.html
+---
+
+<p>This was a weird one....</p> <p>I recently setup a web application on&nbsp;a testing machine (which had a bunch of other web applications on it).&nbsp; The front login page appeared OK, but when&nbsp;I tried login I just got blank pages back.&nbsp; If I tried bringing up pages manually (ie by entering the URL directly) they appeared but as soon as I tried anything that did a postback I got the blank pages again.&nbsp; All the postbacks had stopped - however it was in IE only.&nbsp; Using the application from Firefox worked fine.</p> <p>Obviously something unusual was afoot.</p> <p>About the only thing I could see that was unusual was that the default web site is stopped (and can't be started) because there is a named web application running under the default URL.&nbsp; And anyway, this is perfectly legitimate and shouldn't cause this sort of problem.</p> <p>So, what's a guy to do?&nbsp; Time for Google.</p> <p>It turns out that I ran across an entry about problems with <a href="http://www.aspnetresources.com/blog/ie_validators.aspx">validators and IE</a> that was interesting.&nbsp; One of the most interesting things was one of the comments that said:</p> <p><em>Well, the only advice I can give without seeing your setup is to make sure you also have the "aspnet_client" directory either in web root or in the web app folder.</em></p> <p>So I coped the aspnet_client directory from the default web site to the broken web application and <strong>viola!</strong> It worked!&nbsp; Postbacks were OK, the application worked fine and all was well with the world again.</p> <p>&nbsp;</p> <p>Like I said - weird!</p>

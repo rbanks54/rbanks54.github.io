@@ -1,0 +1,15 @@
+---
+layout: post
+title: Checking Nullable Types for a Value
+date: '2007-09-12T17:15:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- development
+modified_time: '2007-09-12T17:18:14.321+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2493014118486480234
+blogger_orig_url: http://www.richard-banks.org/2007/09/checking-nullable-types-for-value.html
+---
+
+<p>When people are first using Nullable types you'll often see code like the following:</p>  <pre class="codeblock"><span style="color: rgb(0, 0, 255);">int</span>? myInt;<br /><span style="color: rgb(0, 0, 255);">int</span> result;<br /><span style="color: rgb(0, 0, 255);">if</span> (myInt.HasValue)<br />result = myInt.Value;<br /><span style="color: rgb(0, 0, 255);">else</span><br />result = 0;</pre>While this code is perfectly workable, it's a bit on the verbose side of things.<br /><p>You can easily refactor this code using the GetValueOrDefault() method as shown here:</p><pre class="codeblock"><span style="color: rgb(0, 0, 255);">int</span>? myInt;<br /><span style="color: rgb(0, 0, 255);">int</span> result = myInt.GetValueOrDefault();</pre>You can also specify a value in the parameters to return something other than 0 (or whatever the default value for the type normally is).<br /><p>For example</p><pre class="codeblock"><span style="color: rgb(0, 0, 255);">int</span> result = myInt.GetValueOrDefault(123);</pre>

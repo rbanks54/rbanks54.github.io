@@ -1,0 +1,16 @@
+---
+layout: post
+title: Assert.Equals and MSTest
+date: '2007-12-12T18:35:00.001+11:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- testing
+modified_time: '2007-12-12T18:35:02.134+11:00'
+thumbnail: http://lh6.google.com/rbanks54/R1-PJZfdGqI/AAAAAAAAAOI/GEHDGFKO_nA/s72-c/clip7_thumb%5B3%5D
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6002527716533496388
+blogger_orig_url: http://www.richard-banks.org/2007/12/assertequals-and-mstest.html
+---
+
+<p>If you are writing unit tests using MSTest then be aware of the Assert.Equals method as shown here:<pre class="code"><span style="color: rgb(43,145,175)">Assert</span>.Equals(string1, string2);</pre><br /><p>Instead of using the .Equals() method you should actually be using<pre class="code"><span style="color: rgb(43,145,175)">Assert</span>.AreEqual(string1, string2);</pre><br /><p>- OR -<pre class="code"><span style="color: rgb(43,145,175)">StringAssert</span>.Equals(string1, string2);</pre><br /><p>The problem is that Assert.Equals is just the inherited Object.Equals method. It does nothing but compare object equality (not value equality) and return a true or false value instead of breaking the unit test if the items are not equal.&nbsp; Because the true/false return value is ignored nothing untoward will happen and the unit test will continue through giving us a false sense of security that our unit test is passing. <br /><p>This is a common mistake for those of us who are used to NUnit testing as the original line is a correct assert under NUnit. <br /><p>The good news is that for those using VS2008, you don’t have to worry as much since using Assert.Equals will fail any unit test it's used in: <br /><p><a href="http://lh3.google.com/rbanks54/R1-PIpfdGpI/AAAAAAAAAOA/0X6wvGgroq0/clip7%5B5%5D"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="112" alt="clip7" src="http://lh6.google.com/rbanks54/R1-PJZfdGqI/AAAAAAAAAOI/GEHDGFKO_nA/clip7_thumb%5B3%5D" width="969" border="0"></a></p>  

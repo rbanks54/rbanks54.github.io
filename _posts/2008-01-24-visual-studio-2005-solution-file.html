@@ -1,0 +1,15 @@
+---
+layout: post
+title: Visual Studio 2005 Solution File Problems
+date: '2008-01-24T11:23:00.001+11:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- development
+modified_time: '2008-01-24T11:23:00.581+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-5861839958540857316
+blogger_orig_url: http://www.richard-banks.org/2008/01/visual-studio-2005-solution-file.html
+---
+
+<p>On the project I am currently working on we had a recent issue where opening a solution in VS2005 was causing a few messages to be displayed.&nbsp; I was seeing the following</p> <ul> <li>"Projects have recently been added to this solution....", and</li> <li>"Some of the properties associated with the solution could not be read"</li></ul> <p>I eventually found two issues, both of which likely occurred by incorrectly merging the solution file.</p> <p>1.&nbsp; Duplicate Source Control sections</p> <p>We had a second "GlobalSection(TeamFoundationVersionControl) = preSolution" section at the bottom of the solution file.&nbsp; I simply removed the duplicate section.</p> <p>2.&nbsp; Incorrect Path Settings</p> <p>The other problem was that one of the projects (in the source control section) had an incorrect setting.&nbsp; It had</p> <p>SccProjectUniqueName27 = a\\b\\c.csproj<br>SccProjectName27 = x/y/z<br>SccLocalPath27 = x\\y\\z<br>SccProjectFilePathRelativizedFromConnection27 = ..\\..\\..\\a\\b\\</p> <p>This was fixed by deleting the relativized (is that even a word?) entry and changing the SccProjectName to a/b and SccLocalPath to a\\b </p> <p>&nbsp;</p> <p>Now the solution file opens without warnings as expected and all is right with the world again :-)</p>  

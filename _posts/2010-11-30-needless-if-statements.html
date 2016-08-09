@@ -1,0 +1,14 @@
+---
+layout: post
+title: Needless If Statements
+date: '2010-11-30T12:11:00.000+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- development
+modified_time: '2010-11-30T12:11:46.765+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-7532523152497458556
+blogger_orig_url: http://www.richard-banks.org/2010/11/needless-if-statements.html
+---
+
+<p>I was looking through some code today and came across this:</p>  <div><pre class="brush: c#;">context.HttpContext.Response.Clear();<br /><br />if (ImageFormat.Equals(ImageFormat.Bmp))<br />    context.HttpContext.Response.ContentType = &quot;image/bmp&quot;;<br />if (ImageFormat.Equals(ImageFormat.Gif))<br />    context.HttpContext.Response.ContentType = &quot;image/gif&quot;;<br />if (ImageFormat.Equals(ImageFormat.Icon))<br />    context.HttpContext.Response.ContentType = &quot;image/vnd.microsoft.icon&quot;;<br />if (ImageFormat.Equals(ImageFormat.Jpeg))<br />    context.HttpContext.Response.ContentType = &quot;image/jpeg&quot;;<br />if (ImageFormat.Equals(ImageFormat.Png))<br />    context.HttpContext.Response.ContentType = &quot;image/png&quot;;<br />if (ImageFormat.Equals(ImageFormat.Tiff))<br />    context.HttpContext.Response.ContentType = &quot;image/tiff&quot;;<br />if (ImageFormat.Equals(ImageFormat.Wmf))<br />    context.HttpContext.Response.ContentType = &quot;image/wmf&quot;;</pre><br /></div><p>You’ve all seen this sort of thing before, right? And no doubt it’s cousin, the switch statement, is also very familiar to you.</p><p>The problem with that this sort of thing is that those if statements just aren’t required.&#160; For amusement and/or education, go have a look at the <a href="http://www.antiifcampaign.com/" target="_blank">Anti-If campaign</a> to get a more detailed view as to why If statements are undesirable.</p><p>so when you see this sort of thing, take the few minutes you need to refactor your code to something like the following:</p><div><pre class="brush: c#;">var contentResponses = new Dictionary&lt;ImageFormat, string&gt;()<br />                     {<br />                         {ImageFormat.Bmp, &quot;image/bmp&quot;},<br />                         {ImageFormat.Gif, &quot;image/gif&quot;},<br />                         {ImageFormat.Icon, &quot;image/vnd.microsoft.icon&quot;},<br />                         {ImageFormat.Jpeg, &quot;image/jpeg&quot;},<br />                         {ImageFormat.Png, &quot;image/png&quot;},<br />                         {ImageFormat.Tiff, &quot;image/tiff&quot;},<br />                         {ImageFormat.Wmf, &quot;image/wmf&quot;}<br />                     };<br /><br />context.HttpContext.Response.Clear();<br />context.HttpContext.Response.ContentType = contentResponses[ImageFormat];</pre><br /></div><p>You’ll have fewer lines of code and the person who next looks at your code will appreciate it.</p>

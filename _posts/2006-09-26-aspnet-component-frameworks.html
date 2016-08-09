@@ -1,0 +1,15 @@
+---
+layout: post
+title: ASP.NET component frameworks
+date: '2006-09-26T19:54:00.000+10:00'
+author: Richard Banks
+tags:
+- ".net"
+- ajax
+- tools
+modified_time: '2006-09-26T20:10:42.609+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6768538493476116906
+blogger_orig_url: http://www.richard-banks.org/2006/09/aspnet-component-frameworks.html
+---
+
+The team have been working up some new interfaces for our ASP.NET application over the past few weeks.<br /><br />When given a buy vs build choice I'll typically opt for the buy option - it's so much faster to get something written, and it (theoretically) lets the team focus on delivery of business logic rather than interface trickery, the cost is far less than trying to do the same thing yourself, and we don't have to maintain the controls ourselves.<br /><br />So earlier on in the piece I'd done some research to check out the various component vendors and the ASP.NET control collections we could take advantage of.  I looked at quite a few but found that the actual choice is rather limited.  My personal favourite was the <a href="http://www.componentart.com/home.aspx">ComponentArt</a> controls, but the <a href="http://www.telerik.com/">Telerik</a> controls looked OK, and then of course we could use things from <a href="http://atlas.asp.net/default.aspx?tabid=47">Atlas</a>, <a href="http://www.aspxlab.com/">ASPXLab</a> and <a href="http://www.dundas.com/">Dundas</a> if we needed to.<br /><br />The team started working with the ComponentArt controls, but within a week had dumped them.  They're rubbish when you try to use them with an object datasource instead of a dataset data source.  Paging in grids didn't work, they had various browser compatability problems, the documentation was either too sparse or misleading and in the end the frustration was too much for the team.<br /><br />They switched to the Telerik <a href="http://www.telerik.com/asp-net-controls/ui-components/overview.aspx">r.a.d. controls</a>, and within a day had the UI converted and working.  Working with the object datasources, working with multiple browsers (including <a href="http://www.caminobrowser.org/">Camino</a> on the Mac, and to a lesser extent <a href="http://www.apple.com/macosx/features/safari/">Safari</a>) and have since progressed really well.<br /><br />While there are still the occasional quirks with the Telerik controls, the team are more than happy with them and the the UI is starting to look really good now.<br /><br />As a note, the ASPXLab controls are pretty poor, and the Atlas stuff the team want to stay away from until it hits it's 1.0 release later this year, which is fair enough.

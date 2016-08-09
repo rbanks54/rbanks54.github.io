@@ -1,0 +1,18 @@
+---
+layout: post
+title: Clone Detective for Visual Studio 2008
+date: '2008-08-22T09:58:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- open source
+- tools
+- development
+modified_time: '2008-08-22T09:58:38.393+10:00'
+thumbnail: http://lh3.ggpht.com/rbanks54/SK4BLfGrxtI/AAAAAAAAAY8/HGGBfUH3A4A/s72-c/image_thumb%5B3%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-7674857695016167304
+blogger_orig_url: http://www.richard-banks.org/2008/08/clone-detective-for-visual-studio-2008.html
+---
+
+<p>I just ran across a new project on CodePlex today called <a href="http://www.codeplex.com/CloneDetectiveVS" target="_blank">Clone Detective for Visual Studio</a> from Immo Landwerth (also responsible for <a href="http://www.codeplex.com/NQuery" target="_blank">NQuery</a>) and I've got to say that it's really quite cool.&nbsp; I've blogged previously about <a href="http://richardsbraindump.blogspot.com/2008/02/detecting-duplicate-code.html" target="_blank">detecting code clones with CCFinder</a> but CCFinder is an external tool and a bit cumbersome to set up and use.</p> <p>Clone Detective for VS may not be quite as powerful but it is incorporated into VS and is so much easier to use that it will probably become my tool of choice as a result.&nbsp; It's so much better if you can detect your copy &amp; paste development efforts in the same tool that you can fix them in.</p> <p>Here's a quick screenshot of what it looks like:</p> <p><a href="http://lh3.ggpht.com/rbanks54/SK4BKIvcKhI/AAAAAAAAAY4/D2zwe8YrpGw/s1600-h/image%5B5%5D.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" border="0" alt="image" src="http://lh3.ggpht.com/rbanks54/SK4BLfGrxtI/AAAAAAAAAY8/HGGBfUH3A4A/image_thumb%5B3%5D.png?imgmax=800" width="642" height="484"></a> </p> <p>We get 3 new windows we can look at (available from the View menu).</p> <p>The Clone Explorer is where you initiate clone detection, and see results.&nbsp; E.g. the AlternateTaxRules.cs file has 2 cloned sections.</p> <p>The Clone Intersections looks at a file and shows you all the other files that share clones with it.&nbsp; The different colours represent the different clones sections.</p> <p>The Clone Results shows you an individual cloned piece of code and where it resides throughout the application (i.e. all the different files where&nbsp; that same code occurs).</p> <p>When you look at a file with clones you'll see a purple line next to the cloned lines (shown in the image).&nbsp; By default visual studio just shows a single source file in the main window, however by dragging the tab with the filename in it to the right you can get to a side-by-side view which makes it so much easier to compare the clones before deciding it you should refactor or not.</p> <p>From first impressions it looks to be a handy little tool and definitely one to keep in my VS toolbox.</p>  

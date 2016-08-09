@@ -1,0 +1,14 @@
+---
+layout: post
+title: A Simple SQL Performance Tip
+date: '2009-09-17T16:57:00.002+10:00'
+author: Richard Banks
+tags:
+- database
+- development
+modified_time: '2009-09-17T17:00:00.354+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2772836046326642485
+blogger_orig_url: http://www.richard-banks.org/2009/09/simple-sql-performance-tip.html
+---
+
+<p>For those who don’t <a href="http://twitter.com/rbanks54" target="_blank">follow me on twitter</a> (and why not!) you might have missed me having a whinge about a SQL database I was looking at recently from a performance perspective.</p>  <p>Anyway, I found this little INSERT INTO statement in one of the extremelyy slow stored procedures they were having problems with (table names changed to protect the innocent)</p>  <pre class="brush:sql">INSERT INTO #TEMPTable<br />SELECT p.PID,EH.EID, SUM(EH.Amount)<br />FROM ps INNER JOIN<br />xx ON ps.xxID = xx.xxID INNER JOIN<br />p ON xx.PID = p.PID INNER JOIN<br />EH ON ps.psID = EH.psID<br />WHERE p.EID = @ParamID AND (p.Processedflag = 1)<br />GROUP BY EH.EID, p.PID</pre><p>It executed in about 25 seconds. After a look at the indexing I decided to help SQL out a little by making the join to EH a little more selective, as follows:</p><pre class="brush:sql">INSERT INTO #TEMPTable<br />SELECT p.PID,EH.EID, SUM(EH.Amount)<br />FROM ps INNER JOIN<br />xx ON ps.xxID = xx.xxID INNER JOIN<br />p ON xx.PID = p.PID INNER JOIN<br /><i>E1 on E1.EID = p.EID INNER JOIN</i><br /><i>E2 on E2.EID = E1.EID INNER JOIN</i><br />EH ON ps.psID = EH.psID<br /> <i>and EH.EID = E2.EID</i><br />WHERE p.EID = @ParamID AND (p.Processedflag = 1)<br />GROUP BY EH.EID, p.PID</pre><p>That little change reduced the query to under a second, even though I’m now joining to two extra tables.</p><p>If only all performance improvements were as simple. And if looking like a hero was always so easy! :-)  And the lesson for you? Remember to keep your joins as selective as possible, even if it means taking the long way round on joins at times.</p>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: Whats New in Static Code Analysis
+date: '2007-05-25T11:58:00.000+10:00'
+author: Richard Banks
+tags:
+- tools
+- development
+modified_time: '2007-05-25T12:18:07.135+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-4036707685888233691
+blogger_orig_url: http://www.richard-banks.org/2007/05/whats-new-in-static-code-analysis.html
+---
+
+Static code analysis is the process of examining written code at design time and looking for problems.  Typically this is done by tools such as <a href="http://www.gotdotnet.com/Team/FxCop/">FxCop</a>, <a href="http://www.ndepend.com/">NDepend</a> and <a href="http://www.campwoodsw.com/sourcemonitor.html">SourceMonitor</a>  - tools that look for at coding rule violations, cyclomatic code complexity and a whole host of other code metrics.<br /><br />Well, there's a few new tools that are not far away from making it big and getting a lot of attention.<br /><br /><a href="http://submain.com/?nav=products.cir">CodeIt.Right</a> combines FxCop style code analysis with automated refactoring.  The concept being that you not only detect a problem (e.g. naming conventions and usage rule violations) but do something about it automatically to save the developer the hassle of making the change manually.<br /><br /><a href="http://wesnerm.blogs.com/net_undocumented/2007/02/nstatic_present.html">NStatic</a> is still not yet available for download, but there's a <a href="http://wesnerm.blogs.com/net_undocumented/2007/02/nstatic_present.html">2 part</a> <a href="http://wesnerm.blogs.com/net_undocumented/2007/02/nstatic_present_1.html">presentation</a> about what it can do.  Basically NStatic is used to track things such as redundant parameters, expressions that evaluate to constants, infinite loops and other metrics along those lines.  It's looks really useful - I just wish I could get my hands on a copy :-)<br /><br />Finally, <a href="http://research.microsoft.com/Pex/">Pex</a> is a tool in the MS Research labs that uses static analysis to automatically create unit tests.  For those of us who thing TDD is a good thing, then this will likely be a great tool and one that we come to rely on day in and day out.

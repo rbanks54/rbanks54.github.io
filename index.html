@@ -1,13 +1,21 @@
 ---
-layout: default
-title: Your New Jekyll Site
+layout: blank
+body_class: home-intro
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+<section class="intro">
+  {% include navbar.html %}
+
+  <div class="intro-in">
+
+    <h1 class="intro-title"><strong>R</strong>ichard <strong>B</strong>anks</h1>
+    <h2 class="intro-subtitle">Software Development and Agility</h2>
+
+    <nav class="intro-actions">
+      <a href="{{ site.baseUrl }}/blog" class="button button-ghost" role="button">Blog</a>
+      <a href="{{ site.baseUrl }}/about" class="button button-ghost" role="button">About</a>
+    </nav>
+
+  </div>
+
+</section>

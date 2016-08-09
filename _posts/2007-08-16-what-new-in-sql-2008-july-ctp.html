@@ -1,0 +1,14 @@
+---
+layout: post
+title: What's New in SQL 2008 - July CTP
+date: '2007-08-16T13:04:00.001+10:00'
+author: Richard Banks
+tags:
+- database
+- readify
+modified_time: '2007-08-16T13:04:00.208+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2551615579705873089
+blogger_orig_url: http://www.richard-banks.org/2007/08/what-new-in-sql-2008-july-ctp.html
+---
+
+<p>I recently grabbed the new July CTP (CTP4) for SQL 2008 - Katmai.</p> <p>I'm still looking through things,&nbsp;for instance&nbsp;Notification Services has been dropped, and Reporting Services has undergone some serious surgery.</p> <p>One thing that did intrigue me though was a new data type for supporting hierarchical data: hierarchyid.</p> <p>This looks really, really cool. Basically it lets you store tree structured data in SQL and includes methods to make working with that data really simple. You get methods like IsDescendant, GetAncestor, GetLevel, ReParent (for moving nodes/subtrees) and so forth.  <p>You can index either breadth-first or depth-first, so you can index based on how you typically traverse your tree.  <p>Here’s an example table with breadth first indexing: <pre class="codeblock">CREATE TABLE Organization (<br />  EmployeeID hierarchyid,<br />  OrgLevel as EmployeeID.GetLevel(),<br />  EmployeeName nvarchar(50) NOT NULL <br />); <br />CREATE CLUSTERED INDEX Org_Breadth_First<br />ON Organization(OrgLevel,EmployeeID) ;</pre><br /><p>The GetLevel() on the OrgLevel column is so you know what depth a record (node) is at in the tree. <br /><p>Use the GetRoot() function to get the root of a tree (note the double colon syntax). For example, this inserts a new root node and then selects it. <br /><p><pre class="codeblock">INSERT HumanResources.EmployeeOrg (OrgNode, EmployeeID, EmpName, Title) VALUES (hierarchyid::GetRoot(), 1, 'Me', 'CEO') ;<br />SELECT * FROM HumanResources.EmployeeOrg WHERE OrgNode = hierarchyid::GetRoot() ; </pre><br /><p>The other interesting thing is that hierarchyid’s have a ToString() function that spits out hierarchy paths&nbsp;similar to the&nbsp;following examples: <br /><ul><br /><li>/ </li><br /><li>/1/ </li><br /><li>/0.3.-7/ </li><br /><li>/1/3/ </li><br /><li>/0.1/0.2/ </li></ul><br /><p>Nodes can be inserted in any location. Nodes inserted after /1/2/ but before /1/3/ can be represented as /1/2.5/. Nodes inserted before 0 have the logical representation as a negative number. For example, a node that comes before /1/1/ can be represented as /1/-1/. <br /><p>It’s a little weird to look at but it makes sense. <br /><p>Performance is optimised for selecting data, so anything that does large amounts of inserts/deletes or reparenting (think sales order header/order lines for example) may not be a good candidate for hierarchical data.</p>

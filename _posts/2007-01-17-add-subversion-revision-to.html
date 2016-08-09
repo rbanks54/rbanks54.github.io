@@ -1,0 +1,16 @@
+---
+layout: post
+title: Adding the Subversion Revision to the CruiseControl Build Summary
+date: '2007-01-17T08:52:00.000+11:00'
+author: Richard Banks
+tags:
+- tools
+- CruiseControl.NET
+- development
+modified_time: '2007-07-11T22:00:53.303+10:00'
+thumbnail: http://farm1.static.flickr.com/146/359867050_c3e7b4c50b_t.jpg
+blogger_id: tag:blogger.com,1999:blog-13321238.post-3064838450008174126
+blogger_orig_url: http://www.richard-banks.org/2007/01/add-subversion-revision-to.html
+---
+
+At work we use <a title="Subversion Version Control" href="http://subversion.tigris.org/">Subversion</a> for source code version control and the excellent <a href="http://ccnet.thoughtworks.com/">CruiseControl.NET</a> (ccnet) for continuous integration.<br /><br />One of the things we do is version all of the assemblyinfo files with the subversion revision number.  This way all the files we release have a build number that can be traced directly back to the subversion revision number so we can see what changes were made if there are any problems.<br /><br />Unfortunately when looking through the ccnet webdashboard you don't get shown the SVN revision in the summary.  This is because ccnet is designed to work with a multitude of source repositories and not just Subversion.  Fortunately adding the revision to the summary page is a really simple task.  Here's what it looks like:<br /><br /><a href="http://www.flickr.com/photos/83433068@N00/359867050/" title="Photo Sharing"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://farm1.static.flickr.com/146/359867050_c3e7b4c50b.jpg" width="500" height="236" alt="buildlog" /></a><br /><br />In order to get this showing you need to edit the .xsl file used to display the summary page.<br /><br />1. Open {$CC Installation Root}\webdashboard\xsl\header.xsl<br />2. Go to the bottom of the file and locate the "Last Log Entry" section.  It should look like this.<br /><p style="blockquote"><pre>&lt;tr&gt;<br />    &lt;td class="header-label" valign="top"&gt;&lt;nobr>Last log entry:&lt;/nobr&gt;&lt;/td&gt;<br />    &lt;td class="header-data"&gt;&lt;pre&gt;&lt;xsl:value-of select="comment"/&gt;&lt;/pre&gt;&lt;/td&gt;<br />&lt;/tr&gt;</pre></p><br />3. Copy & Paste this section directly underneath it and edit is as shown here<br /><p style="blockquote"><pre>&lt;tr&gt;<br />    &lt;td class="header-label" valign="top"&gt;&lt;nobr&gt;Last log entry:&lt;/nobr&gt;&lt;/td&gt;<br />    &lt;td class="header-data"&gt;&lt;pre&gt;&lt;xsl:value-of select="comment"&gt;&lt;/pre&gt;&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />    &lt;td class="header-label" valign="top"&gt;&lt;nobr&gt;<span style="color: rgb(255, 102, 0);">SVN Revision:</span>&lt;/nobr&gt;&lt;/td&gt;<br />    &lt;td class="header-data"&gt;&lt;pre&gt;&lt;xsl:value-of select="<span style="color: rgb(255, 102, 0);">changeNumber</span>"/&gt;&lt;/pre&gt;&lt;/td&gt;<br />&lt;/tr&gt;</pre></p><br />4.  Save the changes to header.xsl<br />5.  Open your browser and navigate to a build summary.  The SVN Revision should now be shown.<br />6.  You're done.  Go get yourself a coffee.

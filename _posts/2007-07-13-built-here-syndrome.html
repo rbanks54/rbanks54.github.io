@@ -1,0 +1,14 @@
+---
+layout: post
+title: The "Not Built Here" Syndrome
+date: '2007-07-13T17:08:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- development
+modified_time: '2007-07-13T17:08:45.778+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6547931811300195994
+blogger_orig_url: http://www.richard-banks.org/2007/07/built-here-syndrome.html
+---
+
+<p>There's a common trait in developers that if they didn't write something then it must be rubbish.&nbsp; Usually this is just a symptom of not taking the time to understand what the software or library does well and working within those boundaries.&nbsp; OK, I'll admit it, third party software doesn't always meet your needs and sometimes it's just awful stuff, but if it's from a commercial vendor (and Microsoft in particular) then you can be pretty sure that it will improve over time and that while you might need to implement some workarounds to get the job done it should meet your needs.</p> <p>So it's a shame then to see people like Joel Spolsky <a href="http://www.joelonsoftware.com/items/2007/07/12b.html" rel="nofollow">espousing the Not Built Here syndrome</a>, and passing it off with a tone of self righteous elitism.&nbsp; And what was it that they decided to reimplement?&nbsp;It was SQL Server Mirroring!</p> <p>Now let's put things in context.&nbsp; There are <a href="http://www.michaelgorsuch.org/wordpress/2007/07/11/some-times-you-have-to-roll-your-own/" rel="nofollow">3 reasons</a> listed for writing their own mirroring solution, 2 of which are quite legitimate and relate to performance limitations - a fair reason for taking on something that will likely be obsolete when SQL2008 is released.</p> <p>But reason number 3 is&nbsp;"The database mirroring technology is rather new and therefore feels more like a black box."&nbsp; If that's not a classic symptom of "Not Built Here" I don't know what is.</p> <p>What would be a better approach?&nbsp;&nbsp;&nbsp; Well, if SQL was so bad - why not look at Oracle, or another alterative.&nbsp; Or if that wasn't viable, taking the time to understand what they would be trying to replace before jumping in and replacing it.&nbsp; The end decision may have well have been the same, but it would have been based only on logical reasons - not 33% gut feel.</p> <p>I'm interested to hear your thoughts on this one.</p>

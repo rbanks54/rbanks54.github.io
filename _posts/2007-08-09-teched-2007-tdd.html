@@ -1,0 +1,16 @@
+---
+layout: post
+title: 'Tech.Ed 2007: TDD'
+date: '2007-08-09T18:15:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- testing
+- agile
+- development
+modified_time: '2007-08-09T18:15:07.441+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2822423112359686472
+blogger_orig_url: http://www.richard-banks.org/2007/08/teched-2007-tdd.html
+---
+
+<p>I'm a big fan of Test Driven Development and so it was great to sit in a TDD session run by Niel Rodyn (Author of Extreme .NET &amp; Microsoft MVP).</p> <p>While there was nothing new for me in this session, it was really good to hear things from someone else's perspective.</p> <p>I've jotted down some of his comments here (without any real editing) for you to mull over:</p> <ul> <li>Team development should based around getting good people, then figuring out the process/methodology to use, and&nbsp;then finally look at the tooling.&nbsp; The common behaviour is to do the opposite.</li> <li>A lot of the reasons for project failure is due to poor quality.&nbsp; And quality problems are preventable.</li> <li>TDD is all about frequent feedback (as is agile project mgmt).</li> <li>All software projects start with 0 bugs.&nbsp; By adding very small increments of code and keeping the whole thing tested, we can ensure that the number of bugs remains at 0.</li> <li>Good coverage by TDD is a great debugging tool - why? because unit tests are highly focused on small sections of code, so locating a problem is really easy.</li> <li>Unit tests should never go outside the class boundary.&nbsp; Some think unit tests shouldn't be outside the boundaries of a method.</li> <li>Large code will have hundreds of thousands of unit tests.&nbsp; This requires&nbsp;dedicated test servers sitting on the back of CI builds.</li> <li>TDD doesn't mean we can stop other types of testing.</li> <li>A single passing test proves nothing in and of itself.&nbsp; It's by having a large number of tests that make TDD worthwhile and proves the software works well.</li> <li>TDD encourages thinking about edge conditions, exception handling, memory faults, network timeouts,&nbsp;etc.</li> <li>Good Tests are ATRIP ([A]utomatic, [T]horough, [R]epeatable, [I]ndependent, [P]rofessional)</li> <li>Running tests in random order is a good way to test repeatability.</li> <li>TDD is a great way to go fast - no code debt&nbsp;&amp; high confidence.</li> <li>Bug fixing is not refactoring.&nbsp; Refactoring changes structure of code without changing functionality.&nbsp; Fixing bugs changes functionality and is therefore not refactoring.</li> <li>Why write tests first? It makes us think about design first.&nbsp; Scopes our functionality.&nbsp; It tests what we should do, instead of testing what we did - this is critical.</li> <li>Higher quality software dramatically lowers the maintenance and support costs.</li></ul> <p>Tooling:</p> <p>He uses NUnit because it's faster the MSTest&nbsp;in Visual Studio 2005 Team Edition, and also because most people&nbsp;only have VS2005 Pro.&nbsp; Visual Studio 2008 will have testing in the pro edition and if it runs as fast as NUnit does at the moment then he may switch.</p> <p>He uses NMock for mock objects.&nbsp; Personally I prefer RhinoMocks but NMock is great as well.</p>

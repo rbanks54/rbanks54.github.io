@@ -1,0 +1,15 @@
+---
+layout: post
+title: Integrating CruiseControl.NET & SourceMonitor
+date: '2007-01-18T20:35:00.001+11:00'
+author: Richard Banks
+tags:
+- tools
+- CruiseControl.NET
+- development
+modified_time: '2007-06-22T11:43:52.380+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2506298319962665017
+blogger_orig_url: http://www.richard-banks.org/2007/01/integrating-cruisecontrolnet.html
+---
+
+<p><a href="http://confluence.public.thoughtworks.org/display/CCNET/Welcome+to+CruiseControl.NET">CruiseControl.NET</a> (ccnet) includes style sheets and integration instructions for <a href="http://www.1bot.com/">Vil</a> - a static analysis tool that provides a whole bunch of metrics for your code such as <a href="http://www.aivosto.com/project/help/pm-complexity.html">cycolmatic complexity</a>, lines of code, number of methods, etc all of which are useful in monitoring the health of your application.</p> <p>Unfortunately Vil hasn't been updated for quite some time and it doesn't work with .NET 2.0.&nbsp; Kind of a bummer.</p> <p>This is where <a href="http://www.campwoodsw.com/sourcemonitor.html">SourceMonitor</a> steps in.&nbsp; SourceMonitor is a free&nbsp;code analysis tool that has some really nice features in the GUI and also features a command line interface with XML output making it a perfect candidate for integration with CruiseControl.NET.&nbsp; Thankfully <a href="http://www.robincurry.org/blog/default.aspx">Robin Curry</a> has done the hard work already and shown <a title="Integrate CCNet and SourceMonitor" href="http://www.robincurry.org/blog/IntegratingSourceMonitorCodeMetricsIntoAnNAntCruiseControlNETBuild.aspx">how to integrate these tools</a> together as well as providing a bunch of screen shots of what the results look like in the dashboard.</p> <p><img src="http://www.robincurry.org/blog/content/binary/Screenshot_SourceMonitor_Summary_small.jpg"> </p> <p>I followed the bouncing ball today and had it working in about half an hour.&nbsp;&nbsp;Statistics produced include call depth, cycolmatic complexity, number of lines vs number of statements, etc.&nbsp; All really useful information (assuming you know what to do with it and you can interpret it correctly!)</p> <p>SourceMonitor is quick and doesn't add much overhead to the build process however viewing the detailed results on the ccnet dashboard may take time if you have lots of files to analyse (like I do).&nbsp; That said, this is something that is well worth adding to your cruise control configuration and I strongly recommend you have a look at it.</p> <p>P.S. If you want VB.NET analysis you'll need to get your hands on the <a title="SourceMonitor Beta" href="http://www.campwoodsw.com/smbeta.html">beta</a> instead of the current release.</p>

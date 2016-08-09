@@ -1,0 +1,14 @@
+---
+layout: post
+title: How to Double Click to Diff Pending Changes in TFS
+date: '2010-07-02T20:43:00.001+10:00'
+author: Richard Banks
+tags:
+- TFS
+modified_time: '2010-07-02T20:43:21.003+10:00'
+thumbnail: http://lh4.ggpht.com/_5dD_rBQSs2o/TC3Cxz0_nhI/AAAAAAAAAwk/-p3Fk2CS9DA/s72-c/image_thumb%5B1%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-424543619913998327
+blogger_orig_url: http://www.richard-banks.org/2010/07/how-to-double-click-to-diff-pending.html
+---
+
+<p>Have you ever looked at a file in the pending changes window and wanted to see what the differences were between that file and the latest version?&#160; If so, then you’ll no doubt have done the right click, sub-menu dance like this:</p>  <p><a href="http://lh3.ggpht.com/_5dD_rBQSs2o/TC3CxLvhxzI/AAAAAAAAAwg/bLxPV75D2Ok/s1600-h/image%5B3%5D.png"><img style="border-bottom: 0px; border-left: 0px; display: inline; border-top: 0px; border-right: 0px" title="image" border="0" alt="image" src="http://lh4.ggpht.com/_5dD_rBQSs2o/TC3Cxz0_nhI/AAAAAAAAAwk/-p3Fk2CS9DA/image_thumb%5B1%5D.png?imgmax=800" width="484" height="176" /></a> </p>  <p>Well, you don’t have to.&#160; There’s actually a few ways to avoid the right clickiness – here’s how:</p>  <p>1. Press Shift + Double Click.</p>  <p>2. Highlight the file and press Shift+Enter</p>  <p>3. Don’t press shift at all! Just change the registry as follows:</p>  <p>Path:&#160;&#160;&#160;&#160; HKCU\Software\Microsoft\VisualStudio\&lt;ver&gt;\TeamFoundation\SourceControl\Behavior   <br />Value:&#160;&#160; DoubleClickOnChange (DWORD)</p>  <p>0 == view as the primary command (default)   <br />1== compare as primary command</p>  <p>Setting this registry key will make double-click/enter do a diff instead of viewing the file, and make shift+double-click/enter view the file instead.</p>  <p>&#160;</p>  <p>Enjoy!</p>  

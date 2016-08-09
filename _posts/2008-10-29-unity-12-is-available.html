@@ -1,0 +1,15 @@
+---
+layout: post
+title: Unity 1.2 is Available
+date: '2008-10-29T22:49:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- development
+- microsoft
+modified_time: '2008-10-29T22:49:21.956+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-8555852957869312243
+blogger_orig_url: http://www.richard-banks.org/2008/10/unity-12-is-available.html
+---
+
+<p>In case you haven't seen the news yet with all the other PDC hoohah about Windows 7 and Azure going on, Unity 1.2 (and EntLib 4.1) were released today.&nbsp; You can get all the bits you need from <a href="http://www.codeplex.com/unity">www.codeplex.com/unity</a>.</p> <p>Here's a quick "What's New" as far as Unity is concerned (stolen from <a target="_blank" href="http://blogs.msdn.com/agile/archive/2008/10/28/just-released-microsoft-enterprise-library-4-1-and-unity-1-2.aspx">Grigori's blog</a>):</p> <ul> <li>Added an interception mechanism (extension); </li> <li>Added two instance interceptors (<b>TransparentProxyInterceptor</b>, <b>InterfaceInterceptor</b>) and one type interceptor (<b>VirtualMethodInterceptor</b>); </li> <li>Improved support for generics; </li> <li>Added support for arrays; </li> <li>Registered names are now available as an <b>ObjectBuilder</b> policy so that you can do a <b>ResolveAll</b> from within the strategy chain. The container automatically registers itself with itself; </li> <li>Added <b>PerThreadLifeTimeManager</b>; </li> <li>Bug fixes; </li> <li>Performance improvements. </li></ul> <p>The best thing has to be the Aspect Oriented Programming (AOP) support that is now available with the inclusion of interceptors.&nbsp; Awesome!&nbsp; You can use interceptors either with the EntLib Policy Injection Application Block and/or you can roll your own.  <p>I haven't had time to play with it yet but the syntax for creating custom interceptors looks very similar the way the other IoC containers implement interceptors which should make transitioning between them fairly simple. <p>The new per thread lifetime manager is something that should have been in the 1.1 release so it's a very welcome inclusion.&nbsp; Now we have a way to ensure that we won't get objects created by other threads when we call Resolve&lt;T&gt;() (think web applications, etc). <p><a target="_blank" href="http://msdn.microsoft.com/en-us/library/dd203104.aspx">Documentation has also been added to MSDN</a> so go have a look and see how some of this stuff works.</p>  

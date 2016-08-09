@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'Tech.Ed 2007: Workflow Rules'
+date: '2007-08-10T10:55:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- tech.ed
+- workflow
+modified_time: '2007-08-10T10:55:40.885+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2931639138520410111
+blogger_orig_url: http://www.richard-banks.org/2007/08/teched-2007-workflow-rules.html
+---
+
+<p><a href="http://blogs.msdn.com/mwinkle/">Matt Winkler</a> just gave a great talk on using and extending <a href="http://wf.netfx3.com/">Windows Workflow</a> Rules.&nbsp; In the session he talked about the different options for accessing the rules engine including the very interesting revelation that you can use the rules engine without using a workflow.</p> <p>In other words you can use the rules engine in your normal .NET applications and get the rules to work on normal .NET objects.&nbsp; You're not just restricted to running rules from within workflows!&nbsp; It's very, very cool and opens up a whole lot of possibilities and options for developing your .NET apps.</p> <p>Matt also ran through the use of rules in activity conditions, policy activities and custom activities; how to use attributes on methods to tell the rules engine how to behave; he showed a number of different custom rule editors; how to write your own rule editor (including changing the semantics so that your users can use domain specific languages, etc) and finally threw the floor open to questions.</p> <p>Some interesting things that came out of the session - the WF team tested the rule engine with over 100,000 rules in a single ruleset, including rule chaining.&nbsp; Some people have real world rule sets with a few thousand rules.&nbsp; A rule set is evaluated in a single thread meaning performance will be directly linked to the number of rules in a ruleset.</p> <p>What's the biggest problem with the WF Rule Engine?&nbsp;The lack of debugging support - if you've got lots of chained rules it's really hard to get a handle on where things might be going wrong.&nbsp; Tools like the <a href="http://wf.netfx3.com/files/folders/rules_samples/entry311.aspx">Ruleset Analyzer</a> can help but it's obviously not as good as a debugger.</p>

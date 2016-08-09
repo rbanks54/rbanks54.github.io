@@ -1,0 +1,16 @@
+---
+layout: post
+title: Publish TFS Build Information to Twitter
+date: '2008-08-22T08:58:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- TFS
+- tools
+modified_time: '2008-08-22T08:58:45.932+10:00'
+thumbnail: http://lh5.ggpht.com/rbanks54/SK3zJUVuEvI/AAAAAAAAAY0/oMOijXkwqcI/s72-c/image_thumb%5B1%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6473742372675545499
+blogger_orig_url: http://www.richard-banks.org/2008/08/publish-tfs-build-information-to.html
+---
+
+<p>I've put together a simple application to publish build status information from <a href="http://msdn.microsoft.com/en-us/tfs2008/default.aspx" target="_blank">Team Foundation Server</a> to <a href="http://twitter.com" target="_blank">Twitter</a>.&nbsp; It's built as a windows service that listens for the various build status events from TFS and tweets information depending on the event it receives.&nbsp; At its core it uses the Readify.Useful.TeamFoundation.Common assembly from <a href="http://codeplex.com/tfsdeployer/" target="_blank">TFSDeployer</a> for listening to the TFS events and the <a href="http://code.google.com/p/twittern/" target="_blank">TwitterN</a> library from <a href="http://www.amptools.net/" target="_blank">amptools</a> for talking to Twitter.</p> <p>At the moment the application is still very much an alpha with things like error handling and customisation of messages not done as yet.&nbsp; Even so, here's what some working results on Twitter:</p> <p><a href="http://lh5.ggpht.com/rbanks54/SK3zIvtRIuI/AAAAAAAAAYw/DHtTvKCLLJc/s1600-h/image%5B3%5D.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" border="0" alt="image" src="http://lh5.ggpht.com/rbanks54/SK3zJUVuEvI/AAAAAAAAAY0/oMOijXkwqcI/image_thumb%5B1%5D.png?imgmax=800" width="569" height="312"></a> </p> <p>If you're interested in getting a copy for yourself let then me know and I'll put the project up on codeplex.</p>  

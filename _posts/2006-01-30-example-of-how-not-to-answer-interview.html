@@ -1,0 +1,12 @@
+---
+layout: post
+title: An example of how not to answer an interview question
+date: '2006-01-30T17:47:00.000+11:00'
+author: Richard Banks
+tags: 
+modified_time: '2007-07-20T12:13:20.916+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-113860488296023083
+blogger_orig_url: http://www.richard-banks.org/2006/01/example-of-how-not-to-answer-interview.html
+---
+
+I have a bunch of technical questions I typically ask candidates. One of which deals with threading and goes like this:<br /><br />The following code is being executed in a highly threaded environment.<br />1. Why does the Debug.Assert statement sometimes fail?<br />2. What can be done to stop this from occurring?<br /><br /><span style="font-family:courier new;"><pre class="codeblock">public class Warehouse<br />{<br /> private  int stockCount = 0;<br /> public void DecrementStock ()<br /> {<br />  if ( stockCount > 0 )<br />    stockCount--;<br />  Debug.Assert ( stockCount >= 0 )<br /> }<br /> public void IncrementStock()<br /> {<br />   stockCount ++;<br /> }<br />}</pre></span><br /><br />The answer is a beauty:<br /><br /><span style="FONT-STYLE: italic;font-family:trebuchet ms;" >Remove the code in decrementing the stock… this would make the condition of Debug.Assert to always true.</span><br /><br />What a great answer - if in doubt, delete the code. As long as the Assert validates then the system must be correct. Why, even the unit tests would all work then. Genius!!

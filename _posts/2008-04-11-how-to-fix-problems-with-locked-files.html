@@ -1,0 +1,14 @@
+---
+layout: post
+title: How To Fix Problems With Locked Files During a Web Application Build
+date: '2008-04-11T18:47:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- development
+modified_time: '2008-04-11T18:47:58.514+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-7857070889282678602
+blogger_orig_url: http://www.richard-banks.org/2008/04/how-to-fix-problems-with-locked-files.html
+---
+
+<p>I had a client recently that was having a big problem with builds on dev machines failing due to files being locked and unable to be deleted. The problem irregular and it was causing the developers to get frustrated and waste a lot of time in stopping and restarting Visual Studio to try and release the locks.</p> <p>The errors the team were seeing were all similar to this:</p> <p><pre class="codeblock">C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Microsoft.Common.targets : warning MSB3061: Unable to delete file "C:\WebApplication\bin\Web.dll". Access to the path 'C:\WebApplication\bin\Web.dll' is denied.</pre><br /><p></p><br /><p>The application itself was a web application, build on XP machines running VS2005 SP1 and set to use IIS as the default web server (i.e. the application virtual directory was pointed at the source code folder).</p><br /><p>The team had already checked that the indexing service was off and that antivirus wasn't locking files.&nbsp; When using the <a href="http://technet.microsoft.com/en-us/sysinternals/0e18b180-9b7a-4c49-8120-c47c5a693683.aspx" target="_blank">sysinternals utilities</a> to see what other processes were locking those files nothing appeared apart from devenv.exe itself (i.e. visual studio).</p><br /><p>The problem as it turned out was in the settings of the virtual directory in IIS6.&nbsp; The virtual directory still had the "index this location" flag turned on.&nbsp; It turned out that IIS was placing a temporary lock on these files, even though the web application wasn't being started (ie it was just a compile, not a debug run).&nbsp; Why this didn't appear in the sysinternals utilities I'm not sure.</p><br /><p>Anyway, after turning the "index this location" setting off the file locking problem disappeared and the devs started smiling again.&nbsp; Happy days :-)</p>  

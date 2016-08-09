@@ -1,0 +1,13 @@
+---
+layout: post
+title: How to Install TFS 2008 on SQL 2008 SP1
+date: '2009-08-19T15:13:00.001+10:00'
+author: Richard Banks
+tags:
+- TFS
+modified_time: '2009-08-19T15:13:04.361+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-7597370256214959357
+blogger_orig_url: http://www.richard-banks.org/2009/08/how-to-install-tfs-2008-on-sql-2008-sp1.html
+---
+
+<p>As you may be aware, if you want to install TFS 2008 on SQL 2008 you have to slipstream the TFS install media with SP1 so that the installer will talk to the SQL database correctly. There’s info in <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=FF12844F-398C-4FE9-8B0D-9E84181D9923&amp;displaylang=en" target="_blank">the install guide</a> if you need instructions on how to do this.</p> <p>The problem is that install instructions only work if you are using the SQL 2008 RTM version.&nbsp; If you try following the instructions and then installing against an SP1 install then you will be informed by the installer that the database version is incorrect and things won’t work.</p> <p>To fix it, you’ll need to do some manual editing of the hcpackage.xml file in the slipstreamed install folder.&nbsp; See the <a href="http://support.microsoft.com/kb/969985">Microsoft KB entry</a> for all the ugly details and instructions.</p>  

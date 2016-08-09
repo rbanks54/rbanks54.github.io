@@ -1,0 +1,12 @@
+---
+layout: post
+title: ASP.NET 2.0 exposing "thread unsafe" code
+date: '2006-01-25T23:12:00.000+11:00'
+author: Richard Banks
+tags: 
+modified_time: '2006-01-25T23:22:08.906+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-113819172890423035
+blogger_orig_url: http://www.richard-banks.org/2006/01/aspnet-20-exposing-thread-unsafe-code.html
+---
+
+Having recently upgraded our application from ASP.NET 1.1 to ASP.NET 2.0 we were conducting some multiuser test scenarios and discovered a number of problems in our application with data readers not being closed or transactions being completed, etc.<br /><br />These problems all related to threading conflicts and the lack of thread safe code in our data layer.  It didn't take too long for us to fix these problems, but it raised the question as to why ASP.NET 2.0 exposed the issues but they didn't seem to appear under .NET 1.1.<br /><br />I still haven't gotten to the bottom of it, but I can only assume that some of the performance improvements in the ASP 2 runtime relate to vastly improved threading and that due to this we are more likely to see threads conflicts appearing.<br /><br />I wonder if this is something other people have encountered, or if I'm just an isolated case?

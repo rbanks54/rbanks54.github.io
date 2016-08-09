@@ -1,0 +1,16 @@
+---
+layout: post
+title: How to Make Linq to NHibernate’s Expand() Type Safe
+date: '2009-10-16T10:24:00.004+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- open source
+- nhibernate
+- development
+modified_time: '2009-10-16T10:27:59.706+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-3160508735452314596
+blogger_orig_url: http://www.richard-banks.org/2009/10/how-to-make-linq-to-nhibernates-expand.html
+---
+
+Linq to NHibernate is great.&nbsp; It makes your queries so much easier to understand since it expresses the intent of what you are doing better than the CreateCriteria API does.<br /><br />For example compare this statement:<br /><br /><pre class="brush:csharp">var query = session.CreateCriteria&lt;UserProfile&gt;()<br />  .Add(Restrictions.Eq("Id", identifier))<br />  .SetFetchMode("Sites"), FetchMode.Join);<br />var result = query.UniqueResult&lt;userprofile&gt;();</pre><br />with this:<br /><br /><pre class="brush:csharp">var query = from p in session.Linq&lt;UserProfile&gt;().Expand("Sites")<br />  where p.Identifier.Equals(identifier)<br />  select p;<br />var result = query.SingleOrDefault();</pre><br />To me, the second is much easier to read, especially if you have people who aren’t familiar with NHibernate trying to read your code.&nbsp; The only problem with both of these queries is the use of those nasty magic strings.&nbsp; What happens if I refactor my UserProfile class and rename the Sites collection to something like PublicSites?&nbsp; Obviously my query will no longer work as expected but I’d only find that out when I ran my integration tests (or at run time if I happened to be lazy and don’t write tests).<br /><br />I want to avoid all that magic string nastiness and lean on the compiler to help me out, so I planned to write some extension methods to improve the situation, but do that and reinvent the wheel? After all, <a href="http://marcinbudny.blogspot.com/" target="_blank">Marcin Budny</a> has done all that wheel-inventing already and made the <a href="http://marcinbudny.blogspot.com/2009/10/typed-expand-for-linq-to-nhiberante.html" target="_blank">extension methods available from his blog</a>.&nbsp; Sweet!<br /><br />Now I can get rid of that “Sites” magic string and write strongly typed code that looks like this:<br /><br /><pre class="brush:csharp">var query = from p in session.Linq&lt;UserProfile&gt;().Expand(u =&gt; u.Sites)<br />  where p.Identifier.Equals(identifier)<br />  select p;<br />var result = query.FirstOrDefault();</pre><br />Isn’t that so much nicer :-)&nbsp; Thanks Marcin for making your code available!

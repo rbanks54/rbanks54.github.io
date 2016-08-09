@@ -1,0 +1,16 @@
+---
+layout: post
+title: How to Add Assert.Throws() to MSTest
+date: '2010-04-06T12:56:00.002+10:00'
+author: Richard Banks
+tags:
+- how to
+- ".net"
+- testing
+- development
+modified_time: '2010-04-06T12:58:09.052+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2154343605505294750
+blogger_orig_url: http://www.richard-banks.org/2010/04/how-to-add-assertthrows-to-mstest.html
+---
+
+<p>One of the frustrations with MSTest is that it is falling behind the times for unit testing when compared to other testing frameworks.</p>  <p>I find it a real shame this this is happening and that MSTest didn’t gain an Assert.Throws method at any point along the way and that we still have to stick the ExpectedException attribute on our test methods, not to mention the fact that the expected message in the attribute still doesn’t get checked properly.</p>  <p>Now you may be asking “What’s wrong with just using the attribute on the test method?” Simple – consider what happens if the exception your looking for gets thrown by a line other than the one you were expecting it to be thrown on? You will get a false positive.&#160; A test that passes even though it should be breaking.&#160; Nasty stuff that.</p>  <p>I think the Assert.Throws() method from xUnit is so much better because it’s very explicit.&#160; When you use it you know exactly what line the exception should be thrown on and you can also check that the message provided by the exception matches your expectations.</p>  <p>So, why not just use the xUnit asserts thent?&#160; Well, we can.&#160; We can actually keep the MSTest runner and use all the xUnit Asserts instead of the MSTest ones.&#160; Not only do we gain the Assert.Throws() method but we also get xUnits Assert.Equals() method, which can compare arrays and lists, and more.</p>  <p>Here’s how…</p>  <ol>   <li>Add a reference to xUnit to your test project </li>    <li>Add “using Assert=Xunit.Assert;” to your code </li>    <li>Use the Assert.Throws method as you would in an xUnit test. </li> </ol>  <p>Pretty tough, huh?&#160; Here’s an example of it in action:</p>  <p></p>  <pre class="brush:csharp">using System;<br />using System;<br />using System.Collections.Generic;<br />using Microsoft.VisualStudio.TestTools.UnitTesting;<br />using Assert=Xunit.Assert;<br /><br />namespace MyTests<br />{<br />    [TestClass]<br />    public class SomeSillyTests<br />    {<br />        [TestMethod]<br />        public void ShouldThrowNullReferenceException()<br />        {<br />            string myNullString = null;<br />            int length;<br />            Assert.Throws<nullreferenceexception>(() =&gt; length = myNullString.Length);<br />        }<br /><br />        [TestMethod]<br />        public void ShouldCompareListEquality()<br />        {<br />            List&lt;string&gt; List1 = new List&lt;string&gt;() { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; };<br />            List&lt;string&gt; List2 = new List&lt;string&gt;() { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; };<br />            Assert.Equal(List1, List2);<br />        }<br />    }<br />}</pre><p>Enjoy your new found Assert freedoms! :-)&#160; P.S. The same techniques can be applied to using the NUnit or MBUnit Asserts or your own Assertion library of choice.</p>

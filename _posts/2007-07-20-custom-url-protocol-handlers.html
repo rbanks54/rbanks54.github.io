@@ -1,0 +1,15 @@
+---
+layout: post
+title: Custom URL Protocol Handlers
+date: '2007-07-20T11:03:00.001+10:00'
+author: Richard Banks
+tags:
+- readify
+- general
+modified_time: '2007-07-20T11:07:05.101+10:00'
+thumbnail: http://bp2.blogger.com/_5dD_rBQSs2o/RqAKKn-OiLI/AAAAAAAAADI/MwQ8i4WvUIw/s72-c/regseeker1.png
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2985451082608043841
+blogger_orig_url: http://www.richard-banks.org/2007/07/custom-url-protocol-handlers.html
+---
+
+<p>I was looking at some forum signatures recently and noticed that they had a URL link to add a persons contact into Windows Live Messenger. Being curious, I has a look at the URL and noticed that there was a custom URL protocol being used - <a href="msnim:add?contact=someone@somewhere.com">msnim:add?contact=someone@somewhere.com</a></p><p>Now, how would I know to do that and what other protocols are available I wonder. Obviously there's http:, https:, mailto: and more, but how would I see a full list of protocols my computer understands? For instance how does the ms-help: protocol get added when you install Visual Studio? etc.</p><p>A little bit of Google time and I run across <a href="http://www.cfdan.com/posts/URL_Protocol_and_Instancing_Fun.cfm">CFDan's blog entry</a> about creating a new protocol handler. As it turns out adding a custom protocol handler is really just a matter of creating a handful of entries in the windows registry with some specific keys.</p><p>So I could then search the registry for these keys to find out what custom protocol handlers are loaded on my machine. However as it turns out that wouldn't be the complete list. For example you won't find the about: handler (for <a href="about:blank">about:blank</a>) or the one for adding MSN Messenger contacts. For that you'd need to look in HKCR\PROTOCOLS\Handler</p><p>I grabbed a freeware program called <a href="http://www.hoverdesk.net/freeware.htm">RegSeeker</a> and did a search for the custom URL protocols (search for "URL Protocol") on my machine:</p><p><a href="http://bp2.blogger.com/_5dD_rBQSs2o/RqAKKn-OiLI/AAAAAAAAADI/MwQ8i4WvUIw/s1600-h/regseeker1.png"><img id="BLOGGER_PHOTO_ID_5089078756573612210" style="CURSOR: hand" alt="" src="http://bp2.blogger.com/_5dD_rBQSs2o/RqAKKn-OiLI/AAAAAAAAADI/MwQ8i4WvUIw/s320/regseeker1.png" border="0" /></a><br /></p><br /><p>63 Entries! Wow! I never knew. Here's a few of the interesting ones:</p><p>  <strong><em>callto:</em></strong> Calls a person using Skype<br />  <strong><em>conf:</em></strong> Calls a person using MS Office Communicator<br />  <strong><em>feed:</em></strong> Adds a feed to IE/Outlook 2007<br />  <strong><em>firefoxurl:</em></strong> Opens up firefox for the specific url<br />  <em><strong>skype:</strong></em> opens a uri in Skype<br />  <em><strong>msnim:</strong></em> interact with Live Messenger e.g. add?contact=, etc</p>

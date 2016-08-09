@@ -1,0 +1,15 @@
+---
+layout: post
+title: Viewing Git Commit Statistics in TFS
+date: '2014-11-17T22:50:00.001+11:00'
+author: Richard Banks
+tags:
+- TFS
+- git
+modified_time: '2014-11-17T22:50:38.608+11:00'
+thumbnail: http://lh6.ggpht.com/-Qi8HiqvkG_I/VGngOw05mvI/AAAAAAAABqc/iyZLhDfTSWk/s72-c/image_thumb%25255B1%25255D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-1249297534211478429
+blogger_orig_url: http://www.richard-banks.org/2014/11/viewing-git-commit-statistics-in-tfs.html
+---
+
+<p>I thought this might be useful for some of you.</p><p>A <a href="http://stackoverflow.com/q/26932447/63179">question on StackOverflow</a> asked if there’s a way to see any stats on git commits stored across a large number of repositories in TFS. The quick answer is “No, there isn’t. At least not directly”. The slightly longer answer is “Sure. If you’re willing to write a little SQL and maybe create a report to visualise the data”.</p><p>You may recall a little while back I posted on <a href="http://www.richard-banks.org/2014/02/tfs-internals-how-does-tfs-store-git.html">how TFS stores git repositories in its database</a>. There are a number of tables in the database related to commits, and we can use this to get some useful information that we can then turn into stats. Here’s the query:</p><pre class="brush: sql; toolbar: false;">use [Tfs_DefaultCollection]<br /><br />select r.Name, u.FullName, m.CommitTime, m.Comment <br />from dbo.tbl_GitCommitMetadata m<br />left join dbo.tbl_GitCommit c on c.InternalCommitId = m.InternalCommitId<br />left join dbo.tbl_GitRepository r on r.InternalRepositoryId = c.InternalRepositoryId<br />left join dbo.tbl_GitCommitUser u on u.InternalId = m.CommitterId and u.PartitionId = m.PartitionId<br />order by r.Name, u.FullName, m.CommitTime<br /><br /></pre><p>Here’s an example of the output from within SQL Management Studio, looking at a RestSharp repository I pushed to my TFS instance, so you can get an idea of the result:</p><p><a href="http://lh5.ggpht.com/-qsO2l5ck7Jw/VGngONjDJiI/AAAAAAAABqY/3CB_4iMELwU/s1600-h/image%25255B3%25255D.png"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://lh6.ggpht.com/-Qi8HiqvkG_I/VGngOw05mvI/AAAAAAAABqc/iyZLhDfTSWk/image_thumb%25255B1%25255D.png?imgmax=800" width="922" height="223"></a></p>

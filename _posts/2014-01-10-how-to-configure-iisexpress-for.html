@@ -1,0 +1,13 @@
+---
+layout: post
+title: How to configure IISExpress for localtest.me
+date: '2014-01-10T15:44:00.001+11:00'
+author: Richard Banks
+tags:
+- development
+modified_time: '2014-01-10T15:44:49.941+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-3212970866848392465
+blogger_orig_url: http://www.richard-banks.org/2014/01/how-to-configure-iisexpress-for.html
+---
+
+<p>This is another case of me blogging something simply because I keep forgetting it..</p> <p>Quick scenario: I want to use the <a href="http://readme.localtest.me" target="_blank">localtest.me</a> domain for a site on my local dev machine running in IISExpress (handy for a number of reasons). What do I need to do?</p> <p>1. In <em>ApplicationHost.config</em> locate the site I’m interested in and add a new binding, changing myprefix and the port number as appropriate:</p> <blockquote> <p>&lt;binding protocol="http" bindingInformation="*:2744:myprefix.localtest.me" /&gt;</p></blockquote> <p>*Note: the config file is in c:\Users\you\Documents\IISExpress\config\ if you’re having trouble locating it.</p> <p>2. From an elevated command prompt:</p> <blockquote> <p>netsh http add urlacl url=http://myprefix.localtest.me:2744/ user=everyone</p></blockquote> <p>3. Restart IISExpress and browse to <a href="http://myprefix.localtest.me:2744">http://myprefix.localtest.me:2744</a> URL.</p> <p>4. Slap self on forehead for forgetting yet again.</p> <p>5. Job done. Get back to producing awesomeness!</p>  

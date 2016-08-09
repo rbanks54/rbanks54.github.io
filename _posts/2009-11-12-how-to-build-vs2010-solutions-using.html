@@ -1,0 +1,13 @@
+---
+layout: post
+title: How To Build VS2010 Solutions Using TFS2008 Team Build
+date: '2009-11-12T17:54:00.001+11:00'
+author: Richard Banks
+tags:
+- TFS
+modified_time: '2009-11-12T17:54:35.091+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2492494510302650515
+blogger_orig_url: http://www.richard-banks.org/2009/11/how-to-build-vs2010-solutions-using.html
+---
+
+<p>So you’ve got your hands on a bright and shiny copy of Visual Studio 2010 Beta 2 and you want to switch your solutions and projects over to it but you don’t want to upgrade your existing TFS 2008 server to TFS 2010 Beta 2 yet because you’re not yet ready for that much change.&#160; The obvious question is, if you change your solution and project formats over to VS2010 can you get them to build on your existing TFS2008 team build servers?</p>  <p>The answer is yes and here’s how:</p>  <p>Step 1: Install the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=ded875c8-fe5e-4cc9-b973-2171b61fe982&amp;displaylang=en" target="_blank">.Net 4.0 Framework Beta 2</a> on your build server (or just put VS2010 beta 2 on it)</p>  <p>Step 2: Change the Team Build config as follows</p>  <ul>   <li>Stop the Team Build service</li>    <li>Go to <em>C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies</em> and open up <em>TfsBuildService.exe.config</em> in the text editor of your choice.</li>    <li>Find the MSBuildPath setting and set the value as follows     <br />&lt;add key=&quot;MSBuildPath&quot; value=&quot;c:\windows\microsoft.net\Framework\v4.0.21006\&quot; /&gt;</li>    <li>Restart the Team Build service and check that your builds work.</li> </ul>  <ul>Step 3: You’re done.&#160; Go and ask your boss for a pay rise for being so efficient.</ul>  <p>P.S. If your build breaks with errors like this:</p>  <p><em>error MSB4019: The imported project &quot;C:\Program Files\MSBuild\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets&quot; was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.</em></p>  <p>Then it’s likely because you haven’t installed VS2010 installed on your build server.&#160; Go ahead and install it and you should find that the errors are resolved.</p>  <p>So what are you waiting for, go ahead and switch and have fun with VS2010!</p>  <p>…and as always, I take no responsibility if you screw something up – this is beta software after all! :-)</p>  

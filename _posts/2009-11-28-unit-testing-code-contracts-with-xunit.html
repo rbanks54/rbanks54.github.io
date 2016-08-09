@@ -1,0 +1,16 @@
+---
+layout: post
+title: Unit Testing Code Contracts with xUnit
+date: '2009-11-28T12:56:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- testing
+- development
+modified_time: '2009-11-28T12:56:19.525+11:00'
+thumbnail: http://lh3.ggpht.com/_5dD_rBQSs2o/SxCDQphgnzI/AAAAAAAAAsI/wwds_sA-1wA/s72-c/image_thumb%5B2%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6222089901737920867
+blogger_orig_url: http://www.richard-banks.org/2009/11/unit-testing-code-contracts-with-xunit.html
+---
+
+<p>Code contracts are great and I really recommend you use them, but how do they fit into a TDD/BDD flow of development?</p>  <p>When you do test first development you really want to write your unit test and then use the code contracts to satisfy those tests and hit some of those boundary conditions.&#160; You could also use Pex, but Pex is an “after the code is written” tool and really only fits in as a “did I cover all the edges” tool.</p>  <p>The latest versions of code contracts have removed the ability to catch the exception thrown by the contracts when assertions are off, so you can just do a plan Assert.Throws() check.&#160; instead you need to rely on xUnit’s ability to catch an assert failure in a method call and wrap that into it’s own internal exception class – the Xunit.Sdk.TraceAssertException.</p>  <p>First – make sure you’ve got run time checking of contracts set to throw Assert failures in the project properties:</p>  <p><a href="http://lh5.ggpht.com/_5dD_rBQSs2o/SxCDPtiSxcI/AAAAAAAAAsE/vPWr2wFzNlw/s1600-h/image%5B4%5D.png"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="image" border="0" alt="image" src="http://lh3.ggpht.com/_5dD_rBQSs2o/SxCDQphgnzI/AAAAAAAAAsI/wwds_sA-1wA/image_thumb%5B2%5D.png?imgmax=800" width="484" height="151" /></a> </p>  <p>Then you can just do code like the following:</p>  <pre class="brush:csharp">public class ContractTestClass<br />{<br />    [Fact]<br />    public void ShouldPassRequires()<br />    {<br />        Assert.DoesNotThrow(() =&gt; AClass.PositiveInt(1));<br />    }<br /><br />    [Fact]<br />    public void ShouldPassEnsures()<br />    {<br />        Assert.DoesNotThrow(() =&gt; AClass.AnotherPositiveInt(3));<br />    }<br /><br />    [Fact]<br />    public void ShouldFailRequires()<br />    {<br />        Assert.Throws&lt;TraceAssertException&gt;(() =&gt; AClass.PositiveInt(-1));<br />    }<br /><br />    [Fact]<br />    public void ShouldFailEnsures()<br />    {<br />        Assert.Throws&lt;TraceAssertException&gt;(() =&gt; AClass.AnotherPositiveInt(-2));<br />    }<br />}<br /><br />public class AClass<br />{<br />    public static void PositiveInt(int i)<br />    {<br />        Contract.Requires(i &gt;= 0);<br />    }<br /><br />    public static int AnotherPositiveInt(int i)<br />    {<br />        Contract.Ensures(Contract.Result&lt;int&gt;() &gt;= 0);<br />        return i;<br />    }<br />}</pre>  

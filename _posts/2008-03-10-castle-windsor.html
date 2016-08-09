@@ -1,0 +1,16 @@
+---
+layout: post
+title: Castle Windsor
+date: '2008-03-10T19:19:00.001+11:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- open source
+- development
+modified_time: '2008-03-10T19:19:05.757+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-8515447708460810856
+blogger_orig_url: http://www.richard-banks.org/2008/03/castle-windsor.html
+---
+
+<p>Spent a couple of hours this afternoon getting to know the <a href="http://www.castleproject.org" target="_blank">Castle Windsor IoC container</a> again.  <p>I ran through the sample as a refresher and then converted a small app I had lying around to use loosely coupled services/components.  <p>Talk about simple, easy and powerful.&nbsp; I've read enough about this thing to know how it works and played with it briefly in the past, but the latest release adds support for generics and makes it so much easier to use than before (not that it was hard).&nbsp; <p>The effort involved in converting an existing "hard wired" app to be one using loosely coupled services connected at runtime via the plumbing magic of an IoC container is obviously dependent on the current state of the app, but even so switching my app across was only a matter of adding a few lines of code and doing a bit of refactoring.  <p>For instance let's say I have an app that parses some input, I could instantiate parsing and messaging services like this: <pre class="codeblock"><span style="color: rgb(43,145,175)">IWindsorContainer</span> container = <span style="color: rgb(0,0,255)">new</span> <span style="color: rgb(43,145,175)">WindsorContainer</span>();<br />container.AddComponent&lt;<span style="color: rgb(43,145,175)">IMessageDisplay</span>, <span style="color: rgb(43,145,175)">ConsoleMessageDisplay</span>&gt;(<span style="color: rgb(163,21,21)">"console.display"</span>);<br />container.AddComponent&lt;<span style="color: rgb(43,145,175)">IInputParser</span>, <span style="color: rgb(43,145,175)">InputParser</span>&gt;(<span style="color: rgb(163,21,21)">"inputparser"</span>);</pre><br /><p>If I wanted my parser to display messages to the user when there was a problem I'd normally have to wire up the connection between the classes myself, but now I don't need to.&nbsp; All I need to do is have a constructor for the parser like so: <pre class="codeblock"><span style="color: rgb(0,0,255)">private</span> <span style="color: rgb(43,145,175)">IMessageDisplay</span> display;<br /><span style="color: rgb(0,0,255)">public</span> InputParser(<span style="color: rgb(43,145,175)">IMessageDisplay</span> display)<br />{<br />  <span style="color: rgb(0,0,255)">this</span>.display = display;<br />}</pre><br /><p>and the Windsor container takes care of injecting the appropriate IMessageDisplay class for me.<br /><p>The container looks after the lifestyle (singleton, pooling, instance-per-request, etc) of each service as well and the lifecycle (instantiation and disposal) of each object. <br /><p>All that nasty plumbing that we typically have to do is removed and our application becomes so much easier to maintain. <br /><p>Why do we still insist on writing code in such a tightly coupled manner?</p>  

@@ -1,0 +1,15 @@
+---
+layout: post
+title: Automatic Project Check Outs After Installing Visual Studio SDK
+date: '2007-12-03T10:16:00.001+11:00'
+author: Richard Banks
+tags:
+- readify
+- ".net"
+- development
+modified_time: '2007-12-03T10:16:34.121+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-8079114299140798075
+blogger_orig_url: http://www.richard-banks.org/2007/12/automatic-project-check-outs-after.html
+---
+
+<p>After installing the Visual Studio SDK you may encounter the situation where every time you open a solution Visual Studio will automatically check out all of the project files for you.&nbsp; Immediately.</p> <p>Kind of weird, especially as you've not made any changes yet, right?</p> <p>Well, actually Visual Studio <em>has </em>made some changes for you on your behalf, just because it's trying to be "helpful".&nbsp; If you look at the differences between your project and another one you'll see a little bit of extra XML as follows:</p><pre class="codeblock">&lt;itemgroup&gt;<br />    &lt;service include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" /&gt;<br />&lt;/itemgroup&gt;</pre><br /><p>This is actually a known bug in the T4 DSL tool which comes with the SDK.&nbsp; And fortunately it's easy enough to resolve. <br /><p>Go to RegEdit and delete or rename the following keys (the 8.0Exp may not be present on your machine) : <br /><ul><br /><li><strong>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\8.0\Packages\{a9696de6-e209-414d-bbec-a0506fb0e924} </strong></li><br /><li><strong>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\8.0Exp\Packages\{a9696de6-e209-414d-bbec-a0506fb0e924} </strong></li></ul><br /><p><em>(64bit users should look in <strong>HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\...</strong>)</em><br /><p>&nbsp; <p>Now when you open Visual Studio it will stop adding the extra XML and won't keep checking out the projects for you. For more details check the following thread: <a href="http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=954064&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=954064&amp;SiteID=1</a></p>  

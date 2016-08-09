@@ -1,0 +1,12 @@
+---
+layout: post
+title: Stored Procedures vs Dynamic SQL
+date: '2006-03-26T13:10:00.000+11:00'
+author: Richard Banks
+tags: 
+modified_time: '2006-03-26T13:23:04.313+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-114333978422207794
+blogger_orig_url: http://www.richard-banks.org/2006/03/stored-procedures-vs-dynamic-sql.html
+---
+
+I stumbled across a <a href="http://weblogs.asp.net/fbouma/archive/2003/11/18/38178.aspx">post</a> by Frans Bouma about stored procs and dynamic SQL while looking around at some of the new SQL2005 features.<br /><br />I've always thought <a href="http://msdn.microsoft.com/practices/">Microsoft's design patterns</a> team had it wrong with the Data Access Application Block in the <a href="http://msdn.microsoft.com/library/?url=/library/en-us/dnpag2/html/EntLib2.asp">enterprise library</a> and I've been fairly sure of myself.   Now, with .NET 2.0 being released and MS putting effort into <a href="http://msdn.microsoft.com/netframework/future/linq/">LINQ</a> etc I thought the DAAB might get a rethink, but not such luck and lately there's been a lot of noise about how it's all so wonderful.   And then there are things like .NetTiers reaching a point of maturity and I start to get even more uneasy.<br /><br />So I start thinking to myself maybe I'm getting it all wrong - after all Microsoft must have at least some clue about all this stuff, right?  We'll I'm glad to say that the article helped my senses recover right away.  I'm now more convinced than ever that tools like the <a href="http://jcframework.sourceforge.net">AtomsFramework</a>, <a href="http://www.hibernate.org/343.html">NHibernate</a> and the other O/R frameworks are the way to go.<br /><br />Thanks Frans :-)

@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'Visual Studio Tip: Guide Lines for Line Wrapping'
+date: '2009-07-31T15:34:00.001+10:00'
+author: Richard Banks
+tags:
+- development
+modified_time: '2009-07-31T15:35:05.625+10:00'
+thumbnail: http://lh3.ggpht.com/_5dD_rBQSs2o/SnKCWtSOYCI/AAAAAAAAAo0/ycXd2wPIy5Y/s72-c/image_thumb%5B4%5D.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2694972531259725774
+blogger_orig_url: http://www.richard-banks.org/2009/07/visual-studio-tip-guide-lines-for-line.html
+---
+
+<p>Nothing new here, but I was talking about it with a colleague today who wasn’t aware of the feature, so if you haven’t seen it before you might find this useful</p> <p>Let’s say you want to wrap or break lines in your source code at the 80 column mark or 120 columns (or whatever your team prefers).&nbsp; How do you do this?&nbsp; Visual Studio doesn’t include any options in the GUI to enable such functionality.</p> <p>That said, it is possible, and you may have seen people who have guidelines on their screen that look something like the following:</p> <p><a href="http://lh5.ggpht.com/_5dD_rBQSs2o/SnKCVDLmkOI/AAAAAAAAAow/m_alR2KDxNE/s1600-h/image%5B6%5D.png"><img style="border-bottom: 0px; border-left: 0px; display: inline; border-top: 0px; border-right: 0px" title="image" border="0" alt="image" src="http://lh3.ggpht.com/_5dD_rBQSs2o/SnKCWtSOYCI/AAAAAAAAAo0/ycXd2wPIy5Y/image_thumb%5B4%5D.png?imgmax=800" width="504" height="412"></a> </p> <p>The way to do it is to simply jump into Regedit and add a value as follows:</p> <p><strong>Key: </strong>HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\9.0\Text Editor</p> <p><strong>String Name:</strong> Guides </p> <p><strong>Value:</strong> RGB(128,0,0) 80,120</p> <p>The 80,120 will actually add two guidelines – one at column 80 and one at column 120.</p> <p>Hope that helps!</p> <p>References: <a href="http://stackoverflow.com/questions/138703/any-way-to-automatically-wrap-comments-at-column-80-in-visual-studio-2008-or-d" target="_blank">Stack Overflow</a> and <a href="http://blogs.msdn.com/saraford/archive/2004/05/05/257953.aspx" target="_blank">Sara Ford</a></p>  

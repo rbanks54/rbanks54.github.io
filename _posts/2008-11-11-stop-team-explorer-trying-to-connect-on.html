@@ -1,0 +1,14 @@
+---
+layout: post
+title: Stop Team Explorer Trying to Connect on Starting Visual Studio
+date: '2008-11-11T08:28:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- TFS
+modified_time: '2008-11-11T08:28:55.149+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-5005745933750118843
+blogger_orig_url: http://www.richard-banks.org/2008/11/stop-team-explorer-trying-to-connect-on.html
+---
+
+<p>Many thanks to Rob Sanders for <a target="_blank" href="http://internationalized.spaces.live.com/Blog/cns!43F3A7682D1564E4!1103.entry">pointing this one out</a>.</p> <p>If you're a road warrior like me and you aren't always connected to a Team Foundation Server then you probably want to stop Team Explorer's default behaviour of trying to connect to TFS when starting Visual Studio.&nbsp; Waiting for Team Explorer to time out before realising that you really aren't connected to a network can be extremely annoying.</p> <p>So whip out regedit and go do the following:</p> <p><em>Add a DWORD value called <strong>AutoLoadServer</strong> under <strong>HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\8.0\TeamFoundation</strong> and set the value to <strong>0</strong>.</em></p> <p>This will fix the behaviour in Visual Studio 2005.&nbsp; For Visual Studio 2008 use the ...\VisualStudio\9.0... keys instead.</p> <p>&nbsp;</p> <p>Yay! Freedom at last! :-)</p>  

@@ -1,0 +1,14 @@
+---
+layout: post
+title: A (not so serious) C# 5.0 Language Suggestion
+date: '2010-12-14T12:05:00.001+11:00'
+author: Richard Banks
+tags:
+- ".net"
+- development
+modified_time: '2010-12-14T12:32:40.431+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-6324531965192966785
+blogger_orig_url: http://www.richard-banks.org/2010/12/not-so-serious-c-50-language-suggestion.html
+---
+
+<p>Occasionally I run across less then optimal code as part of my day-to-day work, as do most people who deal with legacy code bases.&#160; Even if your code is pure as the driven snow, if you’ve ever spent any time looking at the <a href="http://thedailywtf.com/Series/CodeSOD.aspx" target="_blank">Code Snippet of The Day</a> on the <a href="http://thedailywtf.com/" target="_blank">Daily WTF</a> then you’ll have seen this sort of thing before:</p><pre class="brush: c#;">           for (int i = 0; i &lt; 200; i++)<br />            {<br />                try { someCollection.RemoveAt(42); }<br />                catch { }<br />            }</pre><p>Yes, it’s the classic Try, Catch, Swallow pattern in action.&#160; If there’s a problem in there, we put our hands in the air like we just don’t care.</p><p>So today one of my fellow Readify colleagues, Ivan Hamilton, suggested a new keyword be added to C# 5.0 to help all those developers out there who are constantly writing this sort of thing.&#160; Behold the OBVLIVIOUS keyword!</p><pre class="brush: c#;">           for (int i = 0; i &lt; 200; i++)<br />            {<br />                oblivious { someCollection.RemoveAt(42); }<br />            }</pre><p>Sheer genius!&#160; That code exhibits the same behaviour and is now so much more readable!</p><p>If you were on the C# team, what syntactic sugar would you add to the language?</p>

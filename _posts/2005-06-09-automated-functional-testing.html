@@ -1,0 +1,12 @@
+---
+layout: post
+title: Automated Functional Testing
+date: '2005-06-09T19:04:00.000+10:00'
+author: Richard Banks
+tags: 
+modified_time: '2005-06-09T19:14:55.666+10:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-111830849566158051
+blogger_orig_url: http://www.richard-banks.org/2005/06/automated-functional-testing.html
+---
+
+Today I had a bit of a look around for functional testing tools for web applications.  I ended up downloading the AutomatedQA <a href="http://www.automatedqa.com/products/testcomplete/index.asp">TestComplete</a> demo and trying it out.<br /><br />The demo is a bit limited in the extent of the testing suite that can be developed basically due to the limits on the size of the scripting, but all the features are there.<br /><br />I tried out the test recording and some of the error trapping and it was quite nice.  Since the application I'm testing is an ASP.NET application I needed to know that if I screwed around with the style sheets or added extra whitespace that the tests would still work (since that sort of thing doesn't affect functionality).<br /><br />The good thing is that if the html controls are named (ie they have an id attribute) the test scripts address the controls by name, so if ordering changes, the scripts are still OK (unless you embed tabs of course).<br /><br />If you click on a control the mouse click is positioned based on the top left corner of the control, not the top left corner of the page, so font size changes, extra whitespace, etc don't invalidate the test.<br /><br />Best of all, the price (yes it's commercial) is quite reasonable.  I still want to try to see how it works on load testing, etc but it looks quite good so far.

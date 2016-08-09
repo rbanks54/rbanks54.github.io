@@ -1,0 +1,12 @@
+---
+layout: post
+title: Test the Right Thing
+date: '2009-10-31T18:56:00.000+11:00'
+author: Richard Banks
+tags: 
+modified_time: '2009-10-31T18:56:10.593+11:00'
+blogger_id: tag:blogger.com,1999:blog-13321238.post-2596023957522156978
+blogger_orig_url: http://www.richard-banks.org/2009/10/test-right-thing.html
+---
+
+I was helping a customer recently to improve the way they do testing and I looked at one of their tests as follows:<br /><br /><pre class="brush:csharp">[TestMethod]<br />public void FeedFileProcessorResolvesLoadDirectoryViaFeedType()<br />{<br />  MockRepository mocks = new MockRepository();<br />  using (MockServices services = new MockServices(mocks))<br />  {<br />    FeedType feedType = MockServices.CreateStubFeedType(1001, null, null, @"z:\PickUpDirectory");<br />    Expect.Call(services.FeedTypeProvider.GetByFeedTypeID(feedType.FeedTypeID))<br />      .Return(feedType);<br />    mocks.ReplayAll();<br /><br />    MockFeedFileProcessor.DefaultFeedTypeId = 1001;<br />    FeedFileProcessor processor = new MockFeedFileProcessor();<br />    string loadFilesFrom = processor.DirectoryToLoadFilesFrom.FullName;<br /><br />    mocks.VerifyAll();<br /><br />    Assert.AreEqual(@"z:\PickUpDirectory", loadFilesFrom);<br />  }<br />}</pre><br />On first glance it seems reasonable.&nbsp; The test is named so that it describes what it does and seems to work through checking that the object behaves as it should. Sure the Rhino Mocks syntax could be updated to use AAA syntax, and the using section doesn't really indicate what's going on under the hood there but apart from that it doesn’t look too bad.<br /><br />Look a little closer though and check out the class under test and you may see a small problem.&nbsp; That’s right, the only class being tested here is the mock itself.&nbsp; Not something that you really want to do.<br /><br />By not actually testing a class from our production code we’ve made the test have zero value for the system itself.

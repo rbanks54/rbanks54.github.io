@@ -6,6 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 #source: source
+safe: true
+
 destination: _site
 sass:
   sass_dir: _sass
@@ -25,7 +27,15 @@ paginate_path: /blog/:num/
 # permalink and highlighter
 permalink   : /:year/:title/
 markdown    : kramdown
-highlighter : pygments
+highlighter : rouge
+
+gist:
+   noscript: false
+
+kramdown:
+   input: GFM
+   hard_wrap: false
+   math_engine: mathjax
 
 # SEO settings
 title: Richard Banks

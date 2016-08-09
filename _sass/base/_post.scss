@@ -57,3 +57,45 @@
     border: none;
   }
 }
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+.post-footer {
+  @extend %clearfix;
+  padding: $base-spacing 0;
+  text-align: center;
+  padding-top: $base-spacing;
+  border-top: $base-border;
+
+  p {
+    margin-bottom: 0;
+    color: $medium-gray-color;
+    float: left;
+  }
+
+  .social {
+    a {
+      @include transition(opacity .15s ease-in-out);
+      color: $medium-gray-color;
+      text-decoration: none;
+      opacity: .5;
+
+      &:hover,
+      &:focus,
+      &:active {
+        opacity: 1;
+      }
+    }
+
+    .icon {
+      font-size: 1.2rem;
+    }
+  }
+}

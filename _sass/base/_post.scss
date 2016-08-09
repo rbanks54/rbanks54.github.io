@@ -99,3 +99,10 @@ ul.share-buttons li{
     }
   }
 }
+
+article {
+    ul, ol {
+    list-style-type: square;
+    padding: 1em;
+  }
+}

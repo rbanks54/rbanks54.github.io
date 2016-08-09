@@ -1,7 +1,6 @@
 ul,
 ol {
-  list-style-type: square;
-  margin: 1em;
+  list-style-type: none;
   padding: 0;
 
   &%default-ul {
@@ -29,3 +28,4 @@ dl {
     margin: 0;
   }
 }
+

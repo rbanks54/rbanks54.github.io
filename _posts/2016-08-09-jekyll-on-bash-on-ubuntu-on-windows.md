@@ -24,7 +24,7 @@ I had errors related to `zlib` and various other missing pieces. Naively, I trie
 
 A bit more noodling about, poking at Google and crossing my fingers and I ran across another post by Dave Rupert where he talked about getting [Ruby on Rails running on BoUoW](http://daverupert.com/2016/06/ruby-on-rails-on-bash-on-ubuntu-on-windows/). In it he showed how to install the zlib library (it's zlibc, doh!) and handling a specific problem with nokogiri and how it references it's dependencies. The trick was the `--use-system-libraries` flag when manually installing the gem.
 
-``` shell
+``` bash
 gem install nokogiri -- --use-system-libraries
 ```
 
@@ -34,19 +34,27 @@ Since then it's been a pretty simple case of running jekyll build and jekyll ser
 
 It's been surprisingly easy and now that things are working I'm basically just rotating between the two Jekyll commands to see the progress of my changes. And before you ask, there's a limitation that stops file change notifications being visible in the Bash shell, and this is turns makes the jekyll file watcher crash. 
 
-``` shell
+``` bash
 jekyll b --incremental
-jekyll serve --no-watch --skip-initial-build
+jekyll serve --no-watch --skip-initial-build 
 ```
 
-For the jekyll people out there, yes, I can combine those two commands into one. It's just my personal preference to run them as two steps for now. 
+For the jekyll people out there, yes, I can combine those two commands into one. It's just been during themigration that I'v been running them as two steps. 
 
-Finally, once I'm happy with my content, I simply switch over to my usual windows console and do a git commit and push from there without a problem.
+Oh - a quick update. You can actually run jekyll in watch mode. Just make sure you use the `--force_polling` flag as shown here: 
+
+``` bash
+jekyll serve --force_polling --incremental 
+```
+![bash console](/assets/images/2016-08-11_jobouow.jpg)
+
+
+Finally, when I'm happy with my changes, I simply switch over to my usual windows console and do a git commit and push from there without a problem.
 
 Oh, a few things I noted from using the Bash prompt on Windows:
 
-* Cursor up doesn't always show the previous command. I've had to resort to using `Ctrl`+`P`, especially when running bash inside ConsoleZ.
-* Ctrl+C doesn't send the break signal to processes (e.g. to stop the Jekyll server).  You need to use `Ctrl`+`Shift`+`C` instead.
+* Running bash hosted inside ConsoleZ causes some strange behaviours. Cursor up doesn't show the previous command so I've had to use `Ctrl`+`P` instead.
+* Similarly Ctrl+C doesn't send the break signal inside ConsoleZ (e.g. to stop the Jekyll server).  I had to use `Ctrl`+`Shift`+`C` instead.
 * Paste doesn't work with Ctrl+V as expected either. We're back to mouse based pasting for now (it's a beta so these things are expected I suppose).
 
 Other than that, I'm really pleased and just how well this is working. Well done to both Microsoft and Canonical/Ubuntu for making this happen!

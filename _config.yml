@@ -43,7 +43,8 @@ description: ""
 keywords: "blog, agile, .net, architecture, software development, design, scrum"
 
 # Site settings
-url: http://richard-banks.org
+url: https://www.richard-banks.org
+enforce_ssl: www.richard-banks.org
 baseurl: ""
 
 # Author settings

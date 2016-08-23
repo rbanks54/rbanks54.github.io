@@ -3,7 +3,9 @@ layout: page
 title: About Richard
 subtitle: Yes, he's a real person
 permalink: /about/
-redirect_from: /p/about-richard-banks.html
+redirect_from: 
+  - /p/about-richard-banks.html
+  - /p/about-richard.html
 ---
 
 You want to know something about me? How flattering :-)

@@ -28,7 +28,7 @@ A bit more noodling about, poking at Google and crossing my fingers and I ran ac
 gem install nokogiri -- --use-system-libraries
 ```
 
-That little gem right there (sorry, bad pun intended) was just what I needed to get things clicking and for the jekyll-import script to run successfullly. Happy days!
+That little gem right there (sorry, bad pun intended) was just what I needed to get things clicking and for the jekyll-import script to run successfully. Happy days!
 
 Since then it's been a pretty simple case of running jekyll build and jekyll serve from within the Bash prompt for testing and working with my site content and layout.
 
@@ -39,7 +39,7 @@ jekyll b --incremental
 jekyll serve --no-watch --skip-initial-build 
 ```
 
-For the jekyll people out there, yes, I can combine those two commands into one. It's just been during themigration that I'v been running them as two steps. 
+For the jekyll people out there, yes, I can combine those two commands into one. It's just been during the migration that I've been running them as two steps. 
 
 Oh - a quick update. You can actually run jekyll in watch mode. Just make sure you use the `--force_polling` flag as shown here: 
 

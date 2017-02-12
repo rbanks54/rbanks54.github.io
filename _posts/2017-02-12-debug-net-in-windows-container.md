@@ -29,29 +29,29 @@ Note that the URL shown above is for the 64-bit VS2015 remote tools. For other v
 
 #### Step 2 - Run the container ####
 
-Just use `docker run` as you would normally, but include -p 4020:4020 -p 4021:4021 in the command to map the ports that the remote debugger uses.
+Just use `docker run` as you would normally, but include `-p 4020:4020 -p 4021:4021` in the command to map the ports that the remote debugger uses.
 
-For older versions of the remote tools, the ports are different. See https://msdn.microsoft.com/en-us/library/mt592019.aspx for more information.
+For older versions of the remote tools, the ports are different. See [the MSDN docs](https://msdn.microsoft.com/en-us/library/mt592019.aspx) for more information.
 
 #### Step 3 - Use docker exec ####
 
-Now for the fun bit. Now that the container is running, we've decided we want to debug the application running in it.
+Now for the fun bit. The container is running and we decide we want to debug an application running in it.
 
-Firsly get the container id/name for the container you're interested in.
+You'll need to get the id/name of the container you're interested in.
 
-Now, from the command line, run:
+Once you've got it go the the command line and run
 
 ```
 docker exec -it <id/name> "C:\Program Files\Microsoft Visual Studio 14.0\Common7\IDE\Remote Debugger\x64\msvsmon.exe" /nostatus /silent /noauth /anyuser /nosecuritywarn
 ```
 
-This will start the remote debugger. You'll notice the terminal will appear to hang at this point. This is because msvsmon doesn't exit immediately - it waits until there are no more connections (or until you manually stop it).
+This will start the remote debugger. You'll notice that the attached terminal will appear to hang at this point. This is because `msvsmon` doesn't exit immediately - it waits until there are no more connections (or until you manually stop it).
 
-Be aware that we've configured the debugger to allow anyuser and have disabled authorisation checks. When running on your local development machine I would expect this to be a major concern, but I do want to highlight that there are risks.
+Be aware that we've configured the debugger to allow any user to connect and we have disabled authorisation checks. When running on your local development machine I don't expect this will be a major concern, but it is potentially unsafe and I do want to make sure you realise there are risks.
 
 I would NOT recommend you do this in production. Then again, I don't recommend attaching debuggers to production instances under any circumstances.
 
-If you prefer, you could vary this approach and run powershell or cmd via the EXEC command and, once connected, run msvsmon from the containers command prompt. It's up to you. I prefer the first approach.
+Oh, if you prefer, you could also vary this approach and run a powershell or cmd prompt via the EXEC command and, once connected, run msvsmon from that prompt. It's up to you, though I prefer the first approach.
 
 #### Step 4 - Attach to the machine from Visual Studio ####
 

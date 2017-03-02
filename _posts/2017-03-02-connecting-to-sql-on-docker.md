@@ -46,7 +46,7 @@ docker exec -it sql sqlcmd
 
 You should launch directly into the SQL Command Line utility and be able to see your user information
 
-``` sql
+```
 1> print Suser_Sname()
 2> GO
 User Manager\ContainerAdministrator
@@ -59,7 +59,7 @@ On Windows 10, you can't just connect to windows containers via localhost. You'l
 For now do this:
 
 ```
-docker inspect --format '{{.NetworkSettings.Networks.nat.IPAddress}}' sql
+docker inspect --format '{{"{{.NetworkSettings.Networks.nat.IPAddress" }}}}' sql
 ```
 
 This will tell you the IP address the container is listening on.
@@ -68,7 +68,7 @@ Now open SQL Server Management Studio, Visual Studio or SqlCmd
 
 Here's what you should see (using SqlCmd):
 
-``` sql
+```
 c:\pd>sqlcmd -U sa -S 172.28.129.7
 Password:
 1> print Suser_Sname()

@@ -15,19 +15,19 @@ Note: I'm assuming you already have Docker for Windows installed and have switch
 
 1. Pull the image from the Docker repository
 
-``` cmd
+```
 docker pull microsoft/sql-server-windows
 ```
 
 2. Start a container instance
 
-``` cmd
+```
 docker run -d -p 1433:1433 -e sa_password={my password} -e ACCEPT_EULA=Y --name sql microsoft/mssql-server-windows
 ```
 
 If you want persistence of data in your container you'll need to mount a volume. Here's the variation for that
 
-``` cmd
+```
 docker volume create sql-data 
 REM ^^^ You only need to do this once ^^^
 
@@ -40,7 +40,7 @@ Be aware of one thing with regards to ports, if port 1433 is in use locally (may
 
 Let's run sqlcmd directly on the container.
 
-``` cmd
+```
 docker exec -it sql sqlcmd
 ```
 
@@ -58,7 +58,7 @@ On Windows 10, you can't just connect to windows containers via localhost. You'l
 
 For now do this:
 
-``` cmd
+```
 docker inspect --format '{{.NetworkSettings.Networks.nat.IPAddress}}' sql
 ```
 

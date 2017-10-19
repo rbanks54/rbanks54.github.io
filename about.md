@@ -10,15 +10,11 @@ redirect_from:
 
 You want to know something about me? How flattering :-)
 
-I'm an Australian living in Sydney, NSW.  I spend my non-work time split amongst the family, church, gaming, user groups, tweeting, blogging, chasing down the ideas that pique my interest and even occasionally sleeping.
-
 ## Short Speaker Bio
-If you need to grab a short bio about me then feel free to cut and paste this bit:
-
-Richard Banks has developed software for more than 20 years across a wide range of industries and development platforms. He has filled many roles including developer, team lead, project manager, CIO, CTO, and now, consultant.
-He is a Professional Scrum Trainer, author of the Visual Studio 2012 & 2013 Cookbooks, runs the Sydney Alt.Net user group and is a Microsoft Visual Studio ALM MVP.
-He loves helping development teams improve their skills and the way they work, and seeing them deliver great software.
-You can find him at @rbanks54 on social media and http://www.richard-banks.org/ and he currently works as a Principal Consultant for [Readify](http://readify.net).  
+Richard Banks has developed software for more than 25 years across a wide range of industries and development platforms. He has filled many roles including developer, network operations, team lead, project manager, software architect, CIO, CTO, and now, consultant and coach.
+He is a [Professional Scrum Trainer](https://www.scrum.org/user/198), author of the Visual Studio 2012 & 2013 Cookbooks, runs the [Sydney Alt.Net user group](https://www.meetup.com/Sydney-Alt-Net) and is a [Microsoft Visual Studio ALM MVP](https://mvp.microsoft.com/en-us/PublicProfile/4028890).
+He loves helping development teams improve their skills and the way they work, and seeing people deliver great software.
+You can find him at [@rbanks54](https://twitter.com/rbanks54) on twitter and at http://www.richard-banks.org/. He currently works as a Principal Consultant for [Readify](http://readify.net).  
 
 #### Books/Articles
 

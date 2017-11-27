@@ -12,25 +12,25 @@ Why? A few reasons spring to mind. The first is the isolation that a container p
 
 As an extra bonus, it also means I am effectively able to commit the specific CLI utilities I need for a project into source control without needing to commit any binaries, or worry about developers all having the same versions of a utility installed.
 
-Of course, there's tradeoffs to this approach. Invocing CLI utilities via a `docker run` command is not as easy, and there's a very minor overhead in spinning up a container just to run a utility, but I view these as minor hindrances for the benefits gained.
+Of course, there's tradeoffs to this approach. Invoking CLI utilities via a `docker run` command is not as easy, and there's a very minor overhead in spinning up a container just to run a utility, but I view these as minor hindrances for the benefits gained.
 
 ### A simple example ###
 
-For example I wrote a post last year on [using Jekyll on the Windows Subsystem for Linux (WSL)](/2016/08/jekyll-on-bash-on-ubuntu-on-windows.html), which I using to check my blog locally before pushing it to GitHub Pages. And now? Well, I now use a GitHub Pages images and run a container to check my blog:
+For example I wrote a post last year on [using Jekyll on the Windows Subsystem for Linux (WSL)](/2016/08/jekyll-on-bash-on-ubuntu-on-windows.html), which I use to check my blog locally before pushing it to GitHub Pages. And now? Well, I now use a docker image for GitHub Pages and spin up a container instead:
 
 ```
 docker run -t --rm -v "%CD%":/usr/src/app -p "4000:4000" starefossen/github-pages
 ```
 
-To make it simpler, I've put that command in a .cmd script file and checked it into git so I have it no matter what machine I'm editing my blog on.
+To make it easier, I've put that command in a .cmd script file and checked it into git so I have it available no matter what machine I'm editing my blog on.
 
 ![github pages docker script](/assets/images/2017-11/docker-jekyll.jpg)
 
 ### What about a JavaScript build environment? ###
 
-Another thing I've wanted to do for a while is eliminate the local installs of node, npm and yarn. I really don't like the hassle of checking if I have the right versions of node each time I want to work on a project. It's so much easier to just pull a docker image for node/npm/yarn and run a batch file to execute a command in a container.
+Another thing I've wanted to do for a while is eliminate the local installs of node, npm and yarn. I really don't like the hassle of checking if I have the right versions of node each time I want to work on a project. It would be so much easier to just pull the latest docker image for node/npm/yarn and execute commands on a container instead.
 
-And now I can! No more local node installs, and instead I just use the `node:alpine` container image from the [docker store](https://store.docker.com/images/node) with some local command scripts to save typing out `docker run` commands. Here's one for running yarn:
+And now I can! No more local node installs! I just use the `node:alpine` container image from the [docker store](https://store.docker.com/images/node) with some local command scripts to save typing out the `docker run` commands. Here's one for running yarn, as an example:
 
 ```
 docker run -it --rm -v "%CD%":/usr/src/app -w /usr/src/app node:alpine yarn %*
@@ -98,9 +98,9 @@ Regardless of our configuration, when using webpack the normal approach is to in
 npm install -g webpack
 ```
 
-But a global install doesn't make sense, especially since I no longer have node installed and when the container I run node from gets destroyed as soon as the command completes.
+But a global install doesn't really make sense, especially since I no longer have node installed, and since the container will get destroyed as soon as the command completes.
 
-We need to do a local install instead.
+I want to do a local install instead.
 
 ```
 npm install --only=dev webpack
@@ -126,8 +126,8 @@ and just run `webpack` from the CLI like I normally would.
 Creating a cmd file just to wrap the `npm run` command may feel like overkill, but a number of code editors that have the ability to call webpack assume it is available as a command.  The cmd file helps in those situations. For me, it's when I use Visual Studio's Web Essentials Task Runner.
 ![dockerised webpack inside visual studio](/assets/images/2017-11/webpack_and_vs.jpg)
 
-The _only_ downside of this approach is that the file watcher in the container doesn't detect changes, so I need to manually trigger the rebuild rather than letting the file watcher kick things off for me. It's a minor annoyance but not a big deal for me, personally, but you might not like it.
+The _only_ downside of this approach is that the file watcher in the container doesn't detect changes, so I need to manually trigger the rebuild rather than letting the file watcher kick things off for me. It's a minor annoyance and not a big deal for me, personally, but you might not like it.
 
-_Technical aside:_ The file system watcher should work once the new Linux Containers on Windows (LCOW) feature matures a bit more. It's currently an experimental feature in Docker foor Windows and at the time of writing there's a bug with permissions/chmod in LinuxKit that stops npm installing dependencies properly which means I can't get it working just yet.
+_Technical aside: The file system watcher should work once the new Linux Containers on Windows (LCOW) feature matures a bit more. It's currently an experimental feature in Docker for Windows and at the time of writing there's a bug with permissions/chmod in LinuxKit that stops npm installing dependencies properly, blocking me from making it work._
 
-Long story, short? I'll continue to look for ways to run command line utilities via containers, and even in more complex use cases like a javascript build chain, it's not hard to get things working with minimal effort.
+Long story, short? I'll continue to look for ways to run command line utilities via containers, especially as the more complex use cases like a javascript build chain are achievable with minimal effort.

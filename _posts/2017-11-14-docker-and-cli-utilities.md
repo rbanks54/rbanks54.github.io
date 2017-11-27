@@ -38,6 +38,8 @@ docker run -it --rm -v "%CD%":/usr/src/app -w /usr/src/app node:alpine yarn %*
 
 I created simple variations of the script for running node and npm as well, and put all scripts in the root of my source tree (and checked them into source control)
 
+![helper scripts](/assets/images/2017-11/helper-scripts.jpg)
+
 Once that's done, things will work pretty much as you'd expect. I just need to make sure I'm executing my commands from the appropriate folder since they're not on my path.
 
 ### Example with Vue.js ###

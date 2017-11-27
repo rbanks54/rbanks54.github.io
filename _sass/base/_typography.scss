@@ -106,7 +106,7 @@ code {
   border-radius: 0;
   border: none;
   font-family: "Courier New", monospace;
-  font-size: 0.9em;
+  font-size: 1em;
   margin: 0;
   padding: 0 5px;
   background-color: lighten($lighter-gray-color, 6%);
@@ -115,7 +115,7 @@ code {
 pre {
   -webkit-overflow-scrolling: touch;
   font-family: "Courier New", monospace;
-  font-size: 0.9em;
+  font-size: 1em;
   margin: 0;
 
   code {

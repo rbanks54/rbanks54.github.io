@@ -1,0 +1,1 @@
+docker run -t --rm -v "%CD%":/usr/src/app -p "4000:4000" -p "8081:80" starefossen/github-pages

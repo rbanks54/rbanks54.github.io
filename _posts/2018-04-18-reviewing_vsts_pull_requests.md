@@ -40,7 +40,7 @@ __UPDATE:__ If you do this regularly, you can make the process even easier. Upda
 
 `git config --add remote.origin.fetch +refs/pull/*/merge:refs/remotes/origin/pr/*`
 
-You should then be able now do this:
+You should now be able to do this:
 ```
 git fetch origin
 git checkout pr/1234

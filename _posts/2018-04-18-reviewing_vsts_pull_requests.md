@@ -35,3 +35,15 @@ Once you have fetched the merge commit you will be in a _detatched head_ state. 
 Our git working folder will now have the code from the merge commit in it and we can verify that the result the pull request will be successful. Much better than proving that the source was OK and hoping the result will still be good!
 
 P.S. If you have a build policy on your target branch, the merge commit we're reviewing will be the exact same merge commit used in the VSTS build. 
+
+__UPDATE:__ If you do this regularly, you can make the process even easier. Update your local git fetch settings to grab the pull request refs automatically by running the following command:
+
+`git config --add remote.origin.fetch +refs/pull/*/merge:refs/remotes/origin/pr/*`
+
+You should then be able now do this:
+```
+git fetch origin
+git checkout pr/1234
+```
+
+Credit to [Edward Thomson](https://www.edwardthomson.com/blog/checking-out-visual-studio-online-pull-requests-locally.html) for that workflow improvement.

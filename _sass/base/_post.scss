@@ -2,6 +2,14 @@
 .post-header {
   margin-bottom: $base-spacing;
   padding: 5em 2em;
+
+  @include media($max-tablet) {
+    padding: 2em 2em;
+  }
+
+  @include media($max-tablet-large) {
+    padding: 2em 2em;
+  }
 }
 
 .post-title,

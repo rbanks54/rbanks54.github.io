@@ -27,11 +27,11 @@ body.home-intro {
   margin: auto;
   padding: 4em 2em;
 
-  @include media($min-tablet) {
+  @include media($max-tablet) {
     padding: 1em 0;
   }
 
-  @include media($min-tablet-large) {
+  @include media($max-tablet-large) {
     padding: 1em 0;
   }
 }

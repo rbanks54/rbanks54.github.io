@@ -14,7 +14,7 @@ The mapping approach worked well but the code felt a little repetitious and doma
 
 Additionally, these secondary constructors don't really belong on entities. They don't represent a domain use case and they have a parameter list that mirrors the entity's properties, at which point people wonder why we don't just make all the properties public and go home.
 
-We wanted something to write code that was a cleaner and clearer.
+We wanted something to write code that was cleaner and clearer.
 
 ### Enter the memento pattern
 

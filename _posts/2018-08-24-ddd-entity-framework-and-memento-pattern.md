@@ -179,4 +179,4 @@ You could also nag the C# team and see if they can [get records added to C# 8.0]
 
 Of course you can! You'll find a slightly more fleshed out example on GitHub at [https://github.com/rbanks54/ef-and-memento](https://github.com/rbanks54/ef-and-memento).
 
-I hope you find it useful and if you want to talk more about it get in touch via [Twitter](https://twitter.com/rbanks54) or leave an issue on the GitHub repo. Questions and suggestions are always welcome.z
+I hope you find it useful and if you want to talk more about it get in touch via [Twitter](https://twitter.com/rbanks54) or leave an issue on the GitHub repo. Questions and suggestions are always welcome.

@@ -14,7 +14,7 @@ The mapping approach worked well but the code felt a little repetitious and doma
 
 Additionally, these secondary constructors don't really belong on entities. They don't represent a domain use case and they have a parameter list that mirrors the entity's properties, at which point people wonder why we don't just make all the properties public and go home.
 
-We wanted something to write code that was a cleaner and clearer.
+We wanted something to write code that was cleaner and clearer.
 
 ### Enter the memento pattern
 
@@ -85,7 +85,7 @@ We've ignored any guard clauses on the memento constructor as memento instances 
 
 We've also marked the constructor as `internal`. We put our domain logic in a separate assembly to limit the ability for application code to create a memento directly.
 
-If you're wondering, Entity Framework can still create instances of memento objects even when we only have an internal constructor. EF will use `Activator.CreateInstance` to instantiate a new, empty memento object and then use the private property setters to populate the properties.
+If you're wondering, Entity Framework can still create instances of memento objects even when we only have an internal constructor. EF Core 2.1 can now call constructors that have parameters, as long as the parameters names match the properties names. It's worth noting that this mechanism works regardless of the accessibility modifier applied to the constructor. More information can be found on the [official EF Core documentation](https://docs.microsoft.com/en-us/ef/core/modeling/constructors).
 
 > **Side Note:** If you search the internet you'll see a lot of code where the domain entity has a single `State` property containing the memento object, and all methods update that memento object. I would discourage this as it makes using Identity classes and value objects harder and more awkward to use. It also means concepts such as optimistic concurrency (e.g. the `LastModified` property) are now implicitly part of the domain entity, even though they have nothing to do with the entity itself.
 
@@ -179,4 +179,4 @@ You could also nag the C# team and see if they can [get records added to C# 8.0]
 
 Of course you can! You'll find a slightly more fleshed out example on GitHub at [https://github.com/rbanks54/ef-and-memento](https://github.com/rbanks54/ef-and-memento).
 
-I hope you find it useful and if you want to talk more about it get in touch via [Twitter](https://twitter.com/rbanks54) or leave an issue on the GitHub repo. Questions and suggestions are always welcome.z
+I hope you find it useful and if you want to talk more about it get in touch via [Twitter](https://twitter.com/rbanks54) or leave an issue on the GitHub repo. Questions and suggestions are always welcome.

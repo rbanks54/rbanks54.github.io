@@ -57,16 +57,16 @@ Vue provides a service that supports the building and serving javascript applica
 
 Since we’re going to be serving the javascript content from our existing web api site, we won't need the cli-service's web server capabilities. We’re only interested in the building and packaging of our vue files for distribution.
 
-The defaults provided by vue are good for many people, but won’t quite work for us so we'll need to configured things slightly.
+The defaults provided by vue are good for many people, but won’t quite work for us so we'll need to configure things slightly.
 
 If we wanted, we could configure everything via javascript config files, but since vue-cli provides a handy UI for managing the basics of these configurations, and I know how many people like using UIs, we'll go down that path instead.
 
-From your command line, start the UI by running
+Make your working directory your new vue-app folder and from your command line, start the UI by running
 ```
 vue ui
 ```
 
-Go to the project manager (http://localhost:8000/project/select) and choose to import an existing project
+Go to the project manager (http://localhost:8000/project/select) and choose to import an existing project by clicking "Import this folder"
 
 ![vue project manager](/assets/images/2018-11/vue_project_manager.png)
 
@@ -78,7 +78,7 @@ Next, head to the tasks section are select the build task.
 
 ![vue build parameters](/assets/images/2018-11/vue_build_parameters.png)
 
-Click the parameters buttong and change them so that `Modern Mode` is off, the `env mode` is set to `development`, and set the `output directory` to `../vueApi/wwwroot` (the same folder we used in the overall configuration).
+Click the parameters button and ensure that `Modern Mode` is off, the `env mode` is set to `development`, and set the `output directory` to `../vueApi/wwwroot` (the same folder we used in the overall configuration).
  
 You can also enable `watch for changes` so that whenever any of our vue-app source files are saved the vue-cli-service will automatically rebuild our code and copy it to our output folder.
 

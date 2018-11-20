@@ -27,15 +27,16 @@ Let’s extend the `/about` page to show data from our secured `/api/services` A
 Adjust the `about.vue` `<template>` as follows:
 
 ```html
-    <button @click="callApi">Call API</button>
-    <button @click="callSecureApi">Call Secure API</button>
-    <div v-for="(service,index) in services" :key="index">
-      <p>
-        <img src="service.iconUri" />
-        <a href="service.uri">{{service.name}}</a>
-      </p>
+    <div>
+      <button @click="callApi">Call API</button>
+      <button @click="callSecureApi">Call Secure API</button>
+      <div v-for="(service,index) in services" :key="index">
+        <p>
+          <img :src="service.iconUri" />
+          <a :href="service.uri">{{service.name}}</a>
+        </p>
+      </div>
     </div>
-  </div>
 ```
 
 Add a services property to the component's data in the `<script>` section

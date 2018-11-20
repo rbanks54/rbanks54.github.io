@@ -74,7 +74,7 @@ export default {
 
 Save the file. If you enabled the watch option in your build task you should now be able to switch to the browser and refresh the page.
 
-Navigate to the About page, click the `Call API` button. you should see the following:
+Re-build the app (as explained in post 5) navigate to the About page, click the `Call API` button. You should see the following:
 
 ![results from unsecured API call](/assets/images/2018-11/unsecured_results_view.png)
 

@@ -39,6 +39,18 @@ We begin by marking the `/about` route as secured by adding extra metadata field
 
 We next need to adjust the `export` statement so that the router instance is stored in a variable, and we export the variable not the object directly. This is so we can perform some other actions with the router instance later.
 
+So, instead of
+
+```js
+export default new Router({
+  //…
+})
+
+export default router;
+```
+
+You should have:
+
 ```js
 let router = new Router({
   //…
@@ -68,9 +80,9 @@ router.beforeEach(async (to, from, next) => {
 });
 ```
 
-The `router.app` variable references the base Vue instance ([see the docs](https://router.vuejs.org/api/#router-app)), but it won't be populated the very first time the router is called. For this reasone we provide a default value.
+The `router.app` variable references the base Vue instance ([see the docs](https://router.vuejs.org/api/#router-app)), but it won't be populated the very first time the router is called. For this reason we provide a default value.
 
-In a more realistic application we’d likely be using [Vuex](https://vuex.vuejs.org/) or Redux to access authenticate data, and there'd be no need to access the router.app value. Doing so would make this post series even bigger than it already is, and it’s long enough alresady! We’ll keep it simplistic for now, and you can look up how to better handle state using Vuex later.
+In a more realistic application we’d likely be using [Vuex](https://vuex.vuejs.org/) or Redux to access authenticate data, and there'd be no need to access the router.app value. Doing so would make this post series even bigger than it already is, and it’s long enough already! We’ll keep it simplistic for now, and you can look up how to better handle state using Vuex later.
 
 Those changes made, head over to `main.js` and change the contents to look as follows:
 
@@ -111,7 +123,7 @@ yarn add oidc-client
 
 Now let’s add a new folder called `security` to our `/vue-app/src` folder, and create a `security.js` file in that folder. This will be where we put our code to handle much of the security and OpenId Connect calls.
 
-The `oidc-client` library provides a `UserManager` object that we can configure for communicating with IdentityServer. The conifugration details we supply here must match the client information we created in IdentityServer, otherwise IdentityServer will reject the connection.
+The `oidc-client` library provides a `UserManager` object that we can configure for communicating with IdentityServer. The configuration details we supply here must match the client information we created in IdentityServer, otherwise IdentityServer will reject the connection.
 
 Let’s get this sorted out by adding the following code:
 
@@ -151,7 +163,7 @@ We want to check if a user is already known and if not, we want to trigger the s
 
 Here’s an implementation you can use:
 
-Firstly, let’s import our user manager from our security module
+Firstly, let’s import our user manager from our security module. Add the following line to the top of your file where the other `import` statements are.
 
 ```js
 import mgr from './services/security.js'

@@ -35,7 +35,7 @@ and creating a new project in the Google APIs section.
 
 ![new Google API project](/assets/images/2018-11/new_google_api_project.png)
  
-WHen the creation operation completes you should be on the API Dashboard. Go directly to the credentials area.
+When the creation operation completes you should be on the API Dashboard. Go directly to the credentials area.
 
 As a first step we need to configure the OAuth consent screen. Set the `Application Name` to __Vue API Demo__ and save the changes.
 

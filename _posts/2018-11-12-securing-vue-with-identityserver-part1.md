@@ -6,7 +6,7 @@ author: Richard Banks
 ---
 People regularly ask me how authentication should be performed when calling a secured HTTP API from a Single Page Application.
 
-This blog series provides a worked example, from beginning to end, showing you how to build a SPA with Vue.js, connect it to an HTTP API built with ASP.NET Core and to secure it with IdentityServer v4.
+This blog series provides a worked example, from beginning to end, showing you how to build a SPA with Vue.js, connect it to a HTTP API built with ASP.NET Core and to secure it with IdentityServer v4.
 
 Because you're busy and you might not want to read the entire series just to solve that one small problem you have, here's what we'll cover in each part.
 
@@ -47,7 +47,7 @@ Enough with the preamble. Let’s get started!
 
 Since we don't want to tightly couple the deployment of our authentication service with the deployment of the HTTP API, we'll have two projects. One for the IdentityServer and one for our ASP.NET Core Web API.
 
-We're going to start by creating a new ASP.NET Core Web API project in Visual Studio. 
+We're going to start by creating a new ASP.NET Core Web API project in Visual Studio called `VueApi`.
 
 ![new web API project](/assets/images/2018-11/new_web_api_project.png)
  

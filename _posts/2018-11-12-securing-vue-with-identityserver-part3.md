@@ -22,7 +22,7 @@ This is part 3 of a series showing you how to secure a Vue.js app with IdentityS
 
 _If you're joining the series now, then welcome! We're assuming you have followed along with the previous parts in the series, so it may be worth familiarising yourself with them before continuing._
 
-At line 26 of `Startup.cs` you’ll see code to configure default authentication using a standard username and password approach (`.AddAuthentication()`) as well as for Google and a 3rd party OpenIdConnect provider.
+If it's not already open, open the IdentityServer project we created in the previous parts. Navigate to line 26 of `Startup.cs` and you’ll see code to configure default authentication using a standard username and password approach (`.AddAuthentication()`) as well as for Google and a 3rd party OpenIdConnect provider.
 
 We're not going to use the 3rd Party OpenId Connect provider, so go ahead and delete that code.
 

@@ -14,12 +14,12 @@ $font-weight-bold: 600;
 // Font Sizes
 //
 $base-font-size: 1rem;
-$base-font-size-medium: 1.3rem;
-$base-font-size-large: 1.5rem;
+$base-font-size-medium: 1.1rem;
+$base-font-size-large: 1.2rem;
 
 // Line height
 //
-$base-line-height: 1.5;
+$base-line-height: 1.2;
 $heading-line-height: 1.2;
 
 // Other Sizes
@@ -66,6 +66,8 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 $animation-duration: .5s;
 $base-duration: 150ms;
 $base-timing: ease;
+
+$container-max-width: 850px; 
 
 // Grid system
 //

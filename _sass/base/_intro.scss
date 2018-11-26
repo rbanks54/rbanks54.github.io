@@ -25,7 +25,7 @@ body.home-intro {
   display: inline-block;
   max-width: $desktop-width;
   margin: auto;
-  padding: 4em 2em;
+  padding: 1em 2em;
 
   @include media($max-tablet) {
     padding: 1em 0;

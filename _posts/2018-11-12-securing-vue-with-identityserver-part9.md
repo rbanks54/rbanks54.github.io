@@ -18,7 +18,7 @@ This is part 9 of a series showing you how to secure a Vue.js app with IdentityS
 
 > __Note:__ _You can find the source code for this post series on [GitHub](https://github.com/rbanks54/vue-and-identityserver)._
 
-## Refresh tokens.
+## Refresh tokens
 
 You’ll find that if you leave the Vue app running for long enough that eventually the identity token will expire and you’ll need to sign in again.
 

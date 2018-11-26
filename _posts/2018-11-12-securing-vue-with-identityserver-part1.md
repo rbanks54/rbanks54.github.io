@@ -26,7 +26,7 @@ Because you're busy and you might not want to read the entire series just to sol
 
 ## Overview
 
-Our sample application will be calling an API and displaying the data returned. It's deliberately simple so you can focus on the authenticatation of users and how to manage the identity tokens.
+Our sample application will be calling an API and displaying the data returned. It's deliberately simple so you can focus on the authentication of users and how to manage the identity tokens.
 
 The end-to-end flow in the final application is: 
 * A person browses to our web site to load the Vue.js JavaScript client.
@@ -47,7 +47,7 @@ Enough with the preamble. Let’s get started!
 
 Since we don't want to tightly couple the deployment of our authentication service with the deployment of the HTTP API, we'll have two projects. One for the IdentityServer and one for our ASP.NET Core Web API.
 
-We're going to start by creating a new ASP.NET Core Web API project in Visual Studio. 
+We're going to start by creating a new ASP.NET Core Web API project in Visual Studio called 'VueApi'. 
 
 ![new web API project](/assets/images/2018-11/new_web_api_project.png)
  

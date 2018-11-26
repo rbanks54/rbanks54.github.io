@@ -111,6 +111,8 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 ```
 
+If you're missing references, you may  need to manually add some using statements: `using System.IdentityModel.Tokens.Jwt;` and `using Microsoft.AspNetCore.Authentication.JwtBearer;`
+
 In the `Configure()` method we need to add a call to `UseAuthentication()` before we `UseMvc()`.
 
 While we’re here changing code and since we’re not supporting HTTP we can remove the HttpsRedirection call. We can also remove HSTS for now, as we’re not going to production with this code and we don't need the hassle that HSTS adds just yet.
@@ -134,7 +136,7 @@ At this point authentication is configured, but we don't actually check it anywh
 
 Let’s tell ASP.NET that our `/api/services` route is meant to be secure.
 
-Add the [Authorize] attribute to the controller class definition
+Add the `[Authorize]` attribute to the controller class definition
 
 ```cs
     [Route("api/[controller]")]
@@ -145,15 +147,17 @@ Add the [Authorize] attribute to the controller class definition
         //...
 ```
 
+If the `[Authorize]` attribute isn't resolving, check that you have `using Microsoft.AspNetCore.Authorization;` included at the top of your file.
+
 Start the application again and you should now find that any attempt to browse to the `/api/services` URI will return a __HTTP 401 Unauthorized__ response, while calls to `/api/values` will still work as expected.
 
 Excellent!
 
-Unfortunately at this point it get’s a bit tricky to manually test the authentication is working.
+Unfortunately at this point it will now become a bit tricky to manually test that the authentication is working.
 
-We would need a known client application to  connect to IdentityServer with, we'd need the identity token it would return, and we'd need to attach that as the Bearer token authentication for each call to the API.
+We would need a known client application to connect to IdentityServer with, we'd need the identity token it would return, and we'd need to attach that as the Bearer token authentication for each call to the API.
 
-We should just go ahead and build the client app now, right?
+We should probably just go ahead and build the client app now, right?
 
 I agree! Let's forge ahead with part 5
 

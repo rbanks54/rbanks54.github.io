@@ -74,7 +74,7 @@ export default {
 
 Save the file. If you enabled the watch option in your build task you should now be able to switch to the browser and refresh the page.
 
-Navigate to the About page, click the `Call API` button. you should see the following:
+Rebuild the app (see [part 5](/2018/11/securing-vue-with-identityserver-part5.html)) and navigate to the About page, click the `Call API` button. you should see the following:
 
 ![results from unsecured API call](/assets/images/2018-11/unsecured_results_view.png)
 

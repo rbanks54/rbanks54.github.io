@@ -103,13 +103,13 @@ Now let's cross our fingers, take a deep breath, and give it a try!
 
 Browse to the site (https://localhost:5000), navigate to the `/about` page, sign in (if prompted), and then click the button to call the secure API.
 
-![secured api result](/assets/images/2018-11/secured_api_result.png) 
+![secured API result](/assets/images/2018-11/secured_api_result.png) 
 
 Hopefully, you haven't missed anything along the way and it all works for you. Raise your fists in the air in victory and give yourself a pay raise!
 
 A few things to note: Because we haven't implemented any logout functionality if you ever want to reset and sign in from scratch, you'll need to browse to IdentityServer and click the logout button (it's under your user name),and you'll have to clear your browser local storage to remove any tokens stored there. Alternatively, just start an incognito/inPrivate browser session and use that.
 
-If you want to implement the signout process yourself, you'll need to call the `singoutRedirect()` method from `oidc-client`, but we won’t be doing that in this series.
+If you want to implement the sign out process yourself, you'll need to call the `singoutRedirect()` method from `oidc-client`, but we won’t be doing that in this series.
 
 We're pretty much done, but there's one last thing we should look at. How do we refresh our identity tokens so we're not signed out so regularly?
 

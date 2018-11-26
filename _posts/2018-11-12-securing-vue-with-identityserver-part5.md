@@ -24,7 +24,7 @@ For this part of the exercise, we’re going to need a few tools to be installed
 
 We’ll need [yarn](https://yarnpkg.com) installed (or you can use npm if you prefer), and we’ll also need to add the [vue-cli](https://cli.vuejs.org/) utility.
 
-Assuming you’re using Wndows you can either manually install it, or use Chocolatey. Either way, the instructions are at https://yarnpkg.com/en/docs/install, and I’ll leave it as an exercise for you to complete. (P.S. My personal preference is to install using Chocolatey)
+Assuming you’re using Windows you can either manually install it, or use Chocolatey. Either way, the instructions are at https://yarnpkg.com/en/docs/install, and I’ll leave it as an exercise for you to complete. (P.S. My personal preference is to install using Chocolatey)
 
 Once Yarn is ready you can install the Vue CLI using
 ```
@@ -43,7 +43,7 @@ vue create -n vue-app
 
 The `-n` option tells the vue-cli to not initialise a git repository as this is an existing project and we (should) already have one.
 
-When prompted, choose to __manually select features__. Add the __router__ and remove the linting options, then select the defaults for the prompts that follow.
+When prompted, choose to __manually select features__. Include the __router__ and exclude any linting options, then select the defaults for the prompts that follow by pressing enter. Note that the arrow keys will move between options and the spacebar will toggle the highlighted option.
 
 ![vue cli in action](/assets/images/2018-11/vue-cli.gif)
 
@@ -53,20 +53,20 @@ When we build our Vue code, we’ll deploy it to the `wwwroot` folder of our `Vu
 
 ### Configure the vue-cli-service
 
-Vue provides a service that supports the building and serving javascript applications. You can see more about what it does at https://cli.vuejs.org/
+Vue provides a service that supports the building and serving JavaScript applications. You can see more about what it does at https://cli.vuejs.org/
 
-Since we’re going to be serving the javascript content from our existing web api site, we won't need the cli-service's web server capabilities. We’re only interested in the building and packaging of our vue files for distribution.
+Since we’re going to be serving the JavaScript content from our existing web API site, we won't need the cli-service's web server capabilities. We’re only interested in the building and packaging of our vue files for distribution.
 
-The defaults provided by vue are good for many people, but won’t quite work for us so we'll need to configured things slightly.
+The defaults provided by vue are good for many people, but won’t quite work for us so we'll need to configure things slightly.
 
-If we wanted, we could configure everything via javascript config files, but since vue-cli provides a handy UI for managing the basics of these configurations, and I know how many people like using UIs, we'll go down that path instead.
+If we wanted, we could configure everything via JavaScript config files, but since vue-cli provides a handy UI for managing the basics of these configurations, and I know how many people like using UIs, we'll go down that path instead.
 
-From your command line, start the UI by running
+From your command line, set your current directory to the new `vue-app` folder and start the UI by running
 ```
 vue ui
 ```
 
-Go to the project manager (http://localhost:8000/project/select) and choose to import an existing project
+Go to the project manager (http://localhost:8000/project/select) and choose to import an existing project by clicking "Import this folder"
 
 ![vue project manager](/assets/images/2018-11/vue_project_manager.png)
 
@@ -78,7 +78,7 @@ Next, head to the tasks section are select the build task.
 
 ![vue build parameters](/assets/images/2018-11/vue_build_parameters.png)
 
-Click the parameters buttong and change them so that `Modern Mode` is off, the `env mode` is set to `development`, and set the `output directory` to `../vueApi/wwwroot` (the same folder we used in the overall configuration).
+Click the parameters button and ensure that `Modern Mode` is off, the `env mode` is set to `development`, and set the `output directory` to `../vueApi/wwwroot` (the same folder we used in the overall configuration).
  
 You can also enable `watch for changes` so that whenever any of our vue-app source files are saved the vue-cli-service will automatically rebuild our code and copy it to our output folder.
 
@@ -106,7 +106,7 @@ Head back over to `Startup.cs` in the Web API project and in the `Configure()` m
             });
 ```
 
-The CatchAll controller will simply ensure that direct browsing to a non-root URL will still serve up the vue application. Routing in Vue will then determine whch components get rendered.
+The CatchAll controller will simply ensure that direct browsing to a non-root URL will still serve up the vue application. Routing in Vue will then determine which components get rendered.
 
 Add an empty MVC controller named `CatchAllController`, and change the `Index` method as follows
 

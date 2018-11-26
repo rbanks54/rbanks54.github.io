@@ -53,7 +53,7 @@ In IdentityServer _"clients"_ are the client applications connecting that want t
 
 Firstly, find the Quickstart's JavaScript client configuration in `Config.cs` (you should see it at __line 88__).
 
-Recall that our web application is going to be running on port 5000? When IdentityServer authenticates a person it will make a callback request to the client to complete the signin process.
+Recall that our web application is going to be running on port 5000? When IdentityServer authenticates a person it will make a callback request to the client to complete the sign in process.
 
 We need to tell IdentityServer the URI of this callback endpoint. We'll also adjust the ClientName so that the sign-in process looks a little nicer in the UI.
 
@@ -83,9 +83,9 @@ The Redirect URI will be a route we create (later) in our Vue.js app and is wher
 
 P.S. In case you missed it, we also changed from `http://` to `https://` in the URIs other URIs on the page.
 
+Check your code compiles and that your IdentityServer starts. You won't be able to do too much just yet, but you should be able to log in using the preconfigured users `Bob` and `Alice`, each with a password of `Password`.
 
-
-Check your code compiles and that your IdentityServer starts. You won't be able to do too much just yet, but you should be able to log in using Bob and/or Alice.
+One final note; I prefer using `dotnet watch run` from the specific project folders (not the solution root) to run both the IdentityServer and API applications. If you prefer running from Visual Studio, don't forget to change the startup project or to manually start the specific projects as we go through the series. 
 
 Up Next: [Part 3 - Adding Google Authentication to IdentityServer](/2018/11/securing-vue-with-identityserver-part3.html)
 

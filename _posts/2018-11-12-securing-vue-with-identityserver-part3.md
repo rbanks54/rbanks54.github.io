@@ -35,7 +35,7 @@ and creating a new project in the Google APIs section.
 
 ![new Google API project](/assets/images/2018-11/new_google_api_project.png)
  
-WHen the creation operation completes you should be on the API Dashboard. Go directly to the credentials area.
+When the creation operation completes you should be on the API Dashboard. Go directly to the credentials area.
 
 As a first step we need to configure the OAuth consent screen. Set the `Application Name` to __Vue API Demo__ and save the changes.
 
@@ -70,7 +70,7 @@ From the Dashboard add an API and select Google+.
 
 Now you should be set to go. Give it a try!
 
-Start IdentityServer and navigate to https://localhost:5443/grants. Log in using your Google account, or one of the demo users ('bob' or 'alice', with a password of `password`).
+Start IdentityServer and navigate to https://localhost:5443/grants. Log in using your Google account, or use one of the pre-configured demo users (i.e. `bob` or `alice`, with a password of `password`).
 
 Brilliant! We've now got an API, and a basic IdentityServer running, with support for Google SignIn.
 

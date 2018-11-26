@@ -38,7 +38,7 @@ Add the following properties where we create the UserManager object
     accessTokenExpiringNotificationTime: 10,
 ```
 
-You'll note that `silent-renew.html` is a static page, not a Vue component. This is to avoid the overhead of creating a new Vue instance, and to limit any risk of interrupting work happening in the main application. The `silent-renew.html` page is simply a callback to complete the token renewal process and we're only using it to update our token stored in the browser's local storage. We don't need to update and of Vue’s state information.
+You'll note that `silent-renew.html` is a static page, not a Vue component. This is to avoid the overhead of creating a new Vue instance, and to limit any risk of interrupting work happening in the main application. The `silent-renew.html` page is simply a callback to complete the token renewal process and we're only using it to update our token stored in the browser's local storage. We don't need to update and any of Vue’s state information.
 
 Now, because we’re changing the client to support silent renewal, we need to adjust the client registration in IdentityServer as well.
 
@@ -82,7 +82,7 @@ Create a static folder in `/public`, and then create a `/public/static/silent-re
 </html>
 ```
 
-Since this is static content and we're not building anything with webpack, we need to copy `oidc-client.min.js` from `vue-app\node_modules\oidc-client\dist\oidc-client.min.js` into the `/public/static` folder.
+Since this is static content and we're not building anything with Webpack, we need to copy `oidc-client.min.js` from `vue-app\node_modules\oidc-client\dist\oidc-client.min.js` into the `/public/static` folder.
 
 If you haven’t already done so, build and restart both your identity server and your vue-app sites.
 
